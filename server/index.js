@@ -6,21 +6,19 @@ const bodyParser = require('koa-bodyparser')
 const portfolios = require('./portfolios')
 const PORT = process.env.PORT || 3000
 
-// const { disableOldAlerts } = require('./lib/disable-old-alerts')
+const { updateTokenPrices } = require('./update-token-prices')
+setInterval(function () {
+  updateTokenPrices()
+}, 1000 * (process.env.UPDATE_TOKEN_PRICES_INTERVAL_SECONDS || 60))
+updateTokenPrices()
+
 // const { processAlerts } = require('./lib/process-alerts')
-// const { disableClosedCDPAlerts } = require('./lib/disable-closed-cdp-alerts')
-// const { processCdpsEvents } = require('./lib/process-portfolios-events')
-
-// setInterval(function () {
-//   disableOldAlerts(process.env.MAX_ALERT_AGE_DAYS)
-//   disableClosedCDPAlerts()
-// }, 1000 * process.env.ALERT_CLEANUP_INTERVAL_SECONDS)
-
 // setInterval(function () {
 //   processAlerts()
 // }, 1000 * process.env.ALERT_PROCESSING_INTERVAL_SECONDS)
 // processAlerts()
 
+// const { processCdpsEvents } = require('./lib/process-portfolios-events')
 // setInterval(function () {
 //   processCdpsEvents()
 // }, 1000 * process.env.EVENTS_PROCESSING_INTERVAL_SECONDS)

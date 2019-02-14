@@ -1,6 +1,6 @@
 const mongoose = require('./connection')
 
-const schema = new mongoose.Schema({
+const portfolioSchema = new mongoose.Schema({
   email: String,
   address: String,
   tokens: [{
@@ -22,9 +22,20 @@ const schema = new mongoose.Schema({
     default: new Date('2018-01-01')
   }
 })
+const tokenSchema = new mongoose.Schema({
+  id: String,
+  symbol: String,
+  lastPrice: String,
+  updatedAt: {
+    type: Date,
+    default: Date.now()
+  }
+})
 
-const Portfolio = mongoose.model('Portfolio', schema)
+const Portfolio = mongoose.model('Portfolio', portfolioSchema)
+const Token = mongoose.model('Token', tokenSchema)
 
 module.exports = {
-  Portfolio
+  Portfolio,
+  Token
 }
