@@ -1,0 +1,13 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["**/__tests__/**", "**/__mocks__/**", "**/*.spec.*", "**/*.test.*"]
+  },
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "member-access": [true, "no-public"],
+    "no-submodule-imports": false,
+    "object-literal-sort-keys": false,
+    "jsx-boolean-value": false
+  }
+}
