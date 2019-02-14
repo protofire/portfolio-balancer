@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from '../components/Button';
 import * as images from '../images';
 
-const HomePage = () => {
+const HomePage = ({ history }: RouteComponentProps) => {
+  const startHandler = useCallback(() => {
+    history.push('/portfolios');
+  }, []);
+
   return (
     <Wrapper>
       <Content>
@@ -18,7 +23,9 @@ const HomePage = () => {
             quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
             numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
           </p>
-          <GetStarted inline>GET STARTED!</GetStarted>
+          <GetStarted inline onClick={startHandler}>
+            GET STARTED!
+          </GetStarted>
         </Hero>
       </Content>
       <Footer>
@@ -91,4 +98,4 @@ const GetStarted = styled(Button)`
   right: 32px;
 `;
 
-export default HomePage;
+export default withRouter(HomePage);
