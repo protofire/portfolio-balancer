@@ -7,6 +7,12 @@ const schema = new mongoose.Schema({
       token: String,
       percentage: Number
   }],
+  currentStatus: [{
+      token: String,
+      percentage: Number,
+      tokenDollarValue: Number,
+      totalDollarValue: Number
+  }],
   createdAt: {
     type: Date,
     default: Date.now()
@@ -17,14 +23,6 @@ const schema = new mongoose.Schema({
   }
 })
 
-// schema.options.toJSON = {
-//   transform: function (doc, ret) {
-//     ret.id = ret._id
-//     delete ret._id
-//     delete ret.__v
-//     return ret
-//   }
-// }
 const Portfolio = mongoose.model('Portfolio', schema)
 
 module.exports = {

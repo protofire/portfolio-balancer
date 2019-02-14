@@ -3,7 +3,6 @@ const Koa = require('koa')
 const cors = require('@koa/cors')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
-// const alerts = require('./alerts')
 const portfolios = require('./portfolios')
 const PORT = process.env.PORT || 3000
 
@@ -40,7 +39,6 @@ router.get('/', ctx => {
   ctx.body = 'Portfolio Balancer API'
   return
 })
-// router.use('/alerts', alerts.routes(), alerts.allowedMethods())
 router.use('/portfolios', portfolios.routes(), portfolios.allowedMethods())
 app.use(router.routes()).use(router.allowedMethods())
 
