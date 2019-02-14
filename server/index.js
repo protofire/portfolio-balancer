@@ -12,6 +12,12 @@ setInterval(function () {
 }, 1000 * (process.env.UPDATE_TOKEN_PRICES_INTERVAL_SECONDS || 60))
 updateTokenPrices()
 
+const { processPortfolioBacklog } = require('./process-portfolio-backlog')
+setInterval(function () {
+  processPortfolioBacklog()
+}, 1000 * (process.env.PORTFOLIO_NOTIFICATION_INTERVAL_SECONDS || 60))
+processPortfolioBacklog()
+
 // const { processAlerts } = require('./lib/process-alerts')
 // setInterval(function () {
 //   processAlerts()
