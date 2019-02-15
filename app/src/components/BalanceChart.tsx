@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 export interface PortionProps {
   width: number;
-  color: string;
+  color?: string;
   token: string;
 }
 
@@ -11,14 +11,20 @@ interface BalanceChartProps {
   data: PortionProps[];
 }
 
+const DEFAULT_COLORS = ['#c1adf4', '#65b1cb'];
+
 const BalanceChart = ({ data, ...props }: BalanceChartProps) => {
   return (
     <Wrapper {...props}>
       <BarsWrapper>
-        {data.map(props => {
+        {data.map((props, i) => {
+          const propsWithColor = { ...props };
+          if (!propsWithColor.color) {
+            propsWithColor.color = DEFAULT_COLORS[i];
+          }
           return (
-            <Portion key={`${props.token}-portion`} {...props}>
-              <Percentage {...props} />
+            <Portion key={`${props.token}-portion`} {...propsWithColor}>
+              <Percentage {...propsWithColor} />
             </Portion>
           );
         })}

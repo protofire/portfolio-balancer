@@ -11,22 +11,94 @@ import BalanceChart, { PortionProps } from '../components/BalanceChart';
 import Input from '../components/Input';
 
 const API_URL = process.env.API;
-const logger = logdown('AddPortfolio');
+const logger = logdown('AddPortfolioForm');
 logger.state.isEnabled = process.env.NODE_ENV !== 'production';
 
 interface Props {
   isOpen?: boolean;
   onClose?: () => void;
-  data: PortionProps[];
+  tokens: string[];
+  onCreatePorfolio: () => void;
 }
 
-const AddPortfolioForm = ({ isOpen, onClose, data }: Props) => {
-  const context = useContext(Web3Context);
+const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) => {
+  const [balance, setBalance] = useState(tokens.map(token => ({ token, percentage: 50 })));
+  const [email, setEmail] = useState('');
+
+  const {
+    userData: { address },
+  } = useContext(Web3Context);
 
   const handleClose = useCallback(() => {
     if (onClose) {
       onClose();
     }
+  }, []);
+
+  //  {
+  //   "email": "leolower@gmail.com",
+  //   "address": "0xdontcare",
+  //   "tokens": [
+  //       {
+  //           "token": "DAI",
+  //           "percentage": 60
+  //       },
+  //       {
+  //           "token": "GNO",
+  //           "percentage": 40
+  //       }
+  //   ]
+  // }
+
+  const handleCreate = useCallback(
+    () => {
+      axios
+        .post(`${API_URL}/portfolios/`, {
+          email,
+          address,
+          tokens: balance,
+        })
+        .then(function(response) {
+          logger.log('response', response);
+          if (onCreatePorfolio) {
+            onCreatePorfolio();
+          }
+        })
+        .catch(function(error) {
+          logger.log('error', error.response);
+          if (onCreatePorfolio) {
+            onCreatePorfolio();
+          }
+        });
+    },
+    [email, balance, address],
+  );
+
+  const handleBalanceChange = token => event => {
+    event.preventDefault();
+    const newValue = event.target.value ? event.target.value.trim() : '';
+
+    if (newValue === '' || newValue.match(/^(\d+\.?\d*|\.\d+)$/)) {
+      setBalance(prevBalance => {
+        return prevBalance.map(balance => {
+          const nextBalance = { ...balance };
+          if (nextBalance.token == token) {
+            return {
+              ...balance,
+              percentage: parseInt(newValue),
+            };
+          }
+
+          return balance;
+        });
+      });
+    }
+  };
+
+  const handleEmailChange = useCallback(event => {
+    event.preventDefault();
+    const newValue = event.target.value ? event.target.value.trim() : '';
+    setEmail(newValue);
   }, []);
 
   return isOpen ? (
@@ -38,19 +110,23 @@ const AddPortfolioForm = ({ isOpen, onClose, data }: Props) => {
             <div onClick={handleClose}>X</div>
           </Close>
           <Title>Create Portfolio</Title>
-          <Chart data={data} />
+          <Chart data={balance.map(line => ({ ...line, width: line.percentage }))} />
           <SettingsWrapper>
             <h4>Settings:</h4>
             <BalanceSettingList>
-              {data.map(line => (
-                <BalanceSettingRow>
+              <Input value={email} onChange={handleEmailChange} placeholder={'email'} />
+              {balance.map(line => (
+                <BalanceSettingRow key={`${line.token}-setting-row`}>
                   <TokenSelect>{line.token}</TokenSelect>
-                  <Input value={line.width} />
+                  <InputWrapper>
+                    <Input value={line.percentage} onChange={handleBalanceChange(line.token)} />{' '}
+                    <span>{' %'}</span>
+                  </InputWrapper>
                 </BalanceSettingRow>
               ))}
             </BalanceSettingList>
           </SettingsWrapper>
-          <Button>BALANCE PORTFOLIO</Button>
+          <Button onClick={handleCreate}>CREATE PORFOLIO</Button>
         </Content>
       </Wrapper>
     </>
@@ -136,6 +212,14 @@ const SettingsWrapper = styled.div`
 const BalanceSettingList = styled.div`
   display: flex;
   flex-direction: column;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: var(--input-height);
+  letter-spacing: normal;
+  text-align: left;
+  color: #4d4f5c;
 
   > * {
     padding-bottom: var(--spacing-text);
@@ -148,9 +232,15 @@ const BalanceSettingList = styled.div`
 
 const BalanceSettingRow = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 2fr;
   grid-gap: var(--spacing-text);
   padding-top: var(--spacing-text);
+`;
+
+const InputWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: var(--spacing-text);
 `;
 
 const TokenSelect = styled.div`
@@ -160,15 +250,6 @@ const TokenSelect = styled.div`
   border: 1px solid var(--color-border);
   height: var(--input-height);
   padding-left: var(--spacing-text);
-
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: var(--input-height);
-  letter-spacing: normal;
-  text-align: left;
-  color: #4d4f5c;
 `;
 
 export default AddPortfolioForm;

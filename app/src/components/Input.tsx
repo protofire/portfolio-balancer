@@ -22,6 +22,8 @@ const Wrapper = styled.div`
   padding: 12px 10px;
   overflow: hidden;
   border: 1px solid var(--color-border);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
 
   &:focus {
     background-color: #eaeff3;

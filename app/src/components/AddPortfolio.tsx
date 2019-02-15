@@ -6,20 +6,13 @@ import AddPortfolioForm from '../components/AddPortfolioForm';
 
 import * as images from '../images';
 
-const AddPortfolio = () => {
+interface Props {
+  onCreatePorfolio: () => void;
+}
+
+const AddPortfolio = ({ onCreatePorfolio }: Props) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [portfolio, setPortfolio] = useState([
-    {
-      width: 50,
-      color: '#c1adf4',
-      token: 'OMG',
-    },
-    {
-      width: 50,
-      color: '#65b1cb',
-      token: 'DAI',
-    },
-  ]);
+  const [portfolio, setPortfolio] = useState(['OMG', 'DAI']);
 
   const root = useRef(null);
 
@@ -43,13 +36,28 @@ const AddPortfolio = () => {
     [isFormOpen],
   );
 
+  const handleCreatePortfolio = useCallback(
+    () => {
+      if (onCreatePorfolio) {
+        onCreatePorfolio();
+      }
+      setIsFormOpen(false);
+    },
+    [onCreatePorfolio],
+  );
+
   return (
     <>
       <AddPortfolioCard ref={root} onClick={handleCardClick}>
         <img src={images.add_button} />
         <span>Add Portfolio</span>
       </AddPortfolioCard>
-      <AddPortfolioForm isOpen={isFormOpen} onClose={handleFormClose} data={portfolio} />
+      <AddPortfolioForm
+        isOpen={isFormOpen}
+        onClose={handleFormClose}
+        tokens={portfolio}
+        onCreatePorfolio={handleCreatePortfolio}
+      />
     </>
   );
 };

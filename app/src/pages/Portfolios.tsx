@@ -34,20 +34,25 @@ const PortfoliosConsumer = () => {
 
   useEffect(
     () => {
-      axios
-        .get(`${API_URL}/portfolios/${userAddress}`)
-        .then(result => {
-          console.log(result);
-          setIsloading(false);
-        })
-        .catch(error => {
-          if (error.response.status === 404) {
-            setIsloading(false);
-          }
-        });
+      getPortfolios();
     },
     [userAddress],
   );
+
+  const getPortfolios = () => {
+    logger.log('address', userAddress);
+    axios
+      .get(`${API_URL}/portfolios/${userAddress}`)
+      .then(result => {
+        console.log(result);
+        setIsloading(false);
+      })
+      .catch(error => {
+        if (error.response.status === 404) {
+          setIsloading(false);
+        }
+      });
+  };
 
   return isLoading ? (
     <Spinner size={'big'} />
@@ -56,7 +61,7 @@ const PortfoliosConsumer = () => {
       <NavBar />
       <Content>
         <Title>Your Portfolios</Title>
-        <Section>{portfolios ? <Portfolio /> : <AddPortfolio />}</Section>
+        <Section>{portfolios ? <Portfolio /> : <AddPortfolio onCreatePorfolio={getPortfolios} />}</Section>
       </Content>
     </Layout>
   );
