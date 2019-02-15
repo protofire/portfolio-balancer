@@ -1,14 +1,14 @@
 const axios = require('axios')
-const { Token } = require('./models')
+const { Token } = require('../models')
 
 const tokens = ['gnosis-gno']
 
-async function updateTokenPrices() {
+async function updateTokenPrices () {
   const newPrices = await Promise.all(tokens.map(getTokenPrice))
-  console.log(await Promise.all(newPrices.map(recordNewPrice)))
+  await Promise.all(newPrices.map(recordNewPrice))
 }
 
-async function getTokenPrice(token) {
+async function getTokenPrice (token) {
   const response = await axios.get('https://api.coinmarketcap.com/v1/ticker/' + token)
   return {
     token,
@@ -16,7 +16,7 @@ async function getTokenPrice(token) {
   }
 }
 
-async function recordNewPrice(tokenData) {
+async function recordNewPrice (tokenData) {
   const tokens = await Token.find({ id: tokenData.token })
   const token = tokens[0]
   if (token) {
@@ -28,7 +28,7 @@ async function recordNewPrice(tokenData) {
       id: tokenData.data.id,
       symbol: tokenData.data.symbol,
       lastPrice: tokenData.data.price_usd,
-      updatedAt: new Date(),
+      updatedAt: new Date()
     })
     return portfolio.save()
   }

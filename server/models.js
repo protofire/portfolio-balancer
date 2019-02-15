@@ -4,14 +4,14 @@ const portfolioSchema = new mongoose.Schema({
   email: String,
   address: String,
   tokens: [{
-      token: String,
-      percentage: Number
+    token: String,
+    percentage: Number
   }],
   currentStatus: [{
-      token: String,
-      percentage: Number,
-      tokenDollarValue: Number,
-      totalDollarValue: Number
+    token: String,
+    percentage: Number,
+    tokenDollarValue: Number,
+    totalDollarValue: Number
   }],
   createdAt: {
     type: Date,
@@ -25,7 +25,7 @@ const portfolioSchema = new mongoose.Schema({
 const tokenSchema = new mongoose.Schema({
   id: String,
   symbol: String,
-  lastPrice: String,
+  lastPrice: Number,
   updatedAt: {
     type: Date,
     default: Date.now()

@@ -20,9 +20,10 @@ const portfolioValidator = validate({
 router.post('/', portfolioValidator, async (ctx, next) => {
   try {
     const sum = ctx.request.body.tokens.reduce((acc, t) => acc + t.percentage, 0)
-    if(sum > 100) {
+    if (sum > 100) {
       throw new Error('Token percentages above 100%: ' + sum)
     }
+    ctx.request.body.address = ctx.request.body.address.toLowerCase()
     const portfolio = new Portfolio(ctx.request.body)
     const saved = await portfolio.save()
     ctx.body = saved
