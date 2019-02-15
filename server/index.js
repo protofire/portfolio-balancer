@@ -4,6 +4,7 @@ const cors = require('@koa/cors')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const portfolios = require('./portfolios')
+const changes = require('./changes')
 const PORT = process.env.PORT || 3000
 
 const { updateTokenPrices } = require('./lib/update-token-prices')
@@ -31,6 +32,7 @@ router.get('/', ctx => {
   ctx.body = 'Portfolio Balancer API'
 })
 router.use('/portfolios', portfolios.routes(), portfolios.allowedMethods())
+router.use('/address-changes', changes.routes(), changes.allowedMethods())
 app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(PORT)
