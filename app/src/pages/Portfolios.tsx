@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import logdown from 'logdown';
+import axios from 'axios';
 
 import Web3Provider, { Web3Context } from '../components/Web3Provider/Web3Provider';
 
@@ -7,6 +9,10 @@ import { Content, Layout, NavBar } from './layout';
 import AddPortfolio from '../components/AddPortfolio';
 import Portfolio from '../components/Portfolio';
 import Spinner from '../components/Spinner';
+
+const API_URL = process.env.API;
+const logger = logdown('Portfolio');
+logger.state.isEnabled = process.env.NODE_ENV !== 'production';
 
 const PortfoliosProvider = () => {
   return (
@@ -18,7 +24,30 @@ const PortfoliosProvider = () => {
 
 const PortfoliosConsumer = () => {
   const [isLoading, setIsloading] = useState(true);
-  const context = useContext(Web3Context);
+  const [portfolios, setPortfolios] = useState(null);
+
+  const {
+    userData: { address: userAddress },
+  } = useContext(Web3Context);
+
+  // console.log(context)
+
+  useEffect(
+    () => {
+      axios
+        .get(`${API_URL}/portfolios/${userAddress}`)
+        .then(result => {
+          console.log(result);
+          setIsloading(false);
+        })
+        .catch(error => {
+          if (error.response.status === 404) {
+            setIsloading(false);
+          }
+        });
+    },
+    [userAddress],
+  );
 
   return isLoading ? (
     <Spinner size={'big'} />
@@ -27,10 +56,7 @@ const PortfoliosConsumer = () => {
       <NavBar />
       <Content>
         <Title>Your Portfolios</Title>
-        <Section>
-          <AddPortfolio />
-          <Portfolio />
-        </Section>
+        <Section>{portfolios ? <Portfolio /> : <AddPortfolio />}</Section>
       </Content>
     </Layout>
   );
