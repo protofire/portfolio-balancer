@@ -105,7 +105,7 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
     () => {
       return (
         !email ||
-        balance.filter(b => b.percentage == 0).length > 0 ||
+        // balance.filter(b => b.percentage == 0).length > 0 ||
         balance.reduce((acc, b) => acc + b.percentage, 0) !== 100
       );
     },

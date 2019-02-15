@@ -34,7 +34,13 @@ const PortfoliosConsumer = () => {
 
   useEffect(
     () => {
-      getPortfolios();
+      const timer = setInterval(() => {
+        getPortfolios();
+      }, 10_000);
+
+      return () => {
+        clearInterval(timer);
+      };
     },
     [userAddress],
   );
@@ -45,8 +51,8 @@ const PortfoliosConsumer = () => {
       .get(`${API_URL}/portfolios/${userAddress}`)
       .then(result => {
         console.log(result);
-        if (result && result.data && result.data[0] && result.data[0].tokens) {
-          setPortfolios(result.data[0].tokens);
+        if (result && result.data && result.data[0] && result.data[0]) {
+          setPortfolios(result.data[0]);
         }
         setIsloading(false);
       })

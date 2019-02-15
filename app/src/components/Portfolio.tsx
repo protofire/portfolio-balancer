@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 
 import Card from '../components/Card';
@@ -18,24 +18,38 @@ import BalanceChart from '../components/BalanceChart';
 //   },
 // ];
 
-export interface PortionProps {
-  percentage: number;
-  token: string;
-}
+const Portfolio = ({ data }: any) => {
+  const shouldShowBlanceButton = useMemo(
+    () => {
+      let unbalanced = false;
+      data.tokens.forEach(token => {
+        const current = data.currentStatus.find(cs => cs.token === token.token);
+        if (current && current.percentage !== token.percentage) {
+          unbalanced = true;
+        }
+      });
 
-interface Props {
-  data: PortionProps[];
-}
+      return unbalanced;
+    },
+    [data],
+  );
 
-const Portfolio = ({ data }: Props) => {
   return (
     <PortfolioCard>
       <Title>Portfolio Name…</Title>
       <Content>
-        <BalanceChart data={data} />
+        <div>
+          <h4>Settings</h4>
+          <BalanceChart data={data.tokens} />
+        </div>
+        <div>
+          <h4>Current Status</h4>
+          <BalanceChart data={data.currentStatus} />
+        </div>
       </Content>
       <Footer>
-        <Button>BALANCE PORTFOLIO</Button>
+        {shouldShowBlanceButton && <Button>BALANCE PORTFOLIO</Button>}
+        <Button>Invest DAI</Button>
       </Footer>
     </PortfolioCard>
   );
@@ -50,6 +64,7 @@ const Title = styled.div`
   letter-spacing: normal;
   text-align: left;
   color: #000000;
+  border-bottom: 1px solid var(--color-border);
 `;
 
 const Content = styled.div`
@@ -57,6 +72,17 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  h4 {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: left;
+    color: #222222;
+  }
 `;
 
 const Footer = styled.div`
@@ -64,12 +90,12 @@ const Footer = styled.div`
     font-size: 14px;
     font-weight: lighter;
     line-height: 1.36;
+    margin: var(--spacing-narrow) 0;
   }
 `;
 
 const PortfolioCard = styled(Card)`
   width: 260px;
-  height: 422px;
   display: flex;
   flex-direction: column;
   justify-content: center;

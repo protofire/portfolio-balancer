@@ -22,11 +22,7 @@ const BalanceChart = ({ data, ...props }: BalanceChartProps) => {
           if (!propsWithColor.color) {
             propsWithColor.color = DEFAULT_COLORS[i];
           }
-          return (
-            <Portion key={`${props.token}-portion`} {...propsWithColor}>
-              <Percentage {...propsWithColor} />
-            </Portion>
-          );
+          return <Portion key={`${props.token}-portion`} {...propsWithColor} />;
         })}
       </BarsWrapper>
       <Caption data={data} />
@@ -62,7 +58,7 @@ const Caption = ({ data }: BalanceChartProps) => {
         }
         return (
           <CaptionItem key={`${props.token}-cap-item`} {...propsWithColor}>
-            <span /> {props.token}
+            <span /> {`${props.token} ${props.percentage}%`}
           </CaptionItem>
         );
       })}
