@@ -12,6 +12,7 @@ module.exports = function(api) {
       'react-hot-loader/babel',
       'react-loadable/babel',
       'styled-components',
+      'inline-dotenv',
     ],
   };
 };
