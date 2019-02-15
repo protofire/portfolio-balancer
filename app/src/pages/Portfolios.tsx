@@ -45,11 +45,15 @@ const PortfoliosConsumer = () => {
       .get(`${API_URL}/portfolios/${userAddress}`)
       .then(result => {
         console.log(result);
+        if (result && result.data && result.data[0] && result.data[0].tokens) {
+          setPortfolios(result.data[0].tokens);
+        }
         setIsloading(false);
       })
       .catch(error => {
         if (error.response.status === 404) {
           setIsloading(false);
+          setPortfolios(null);
         }
       });
   };
@@ -61,7 +65,9 @@ const PortfoliosConsumer = () => {
       <NavBar />
       <Content>
         <Title>Your Portfolios</Title>
-        <Section>{portfolios ? <Portfolio /> : <AddPortfolio onCreatePorfolio={getPortfolios} />}</Section>
+        <Section>
+          {portfolios ? <Portfolio data={portfolios} /> : <AddPortfolio onCreatePorfolio={getPortfolios} />}
+        </Section>
       </Content>
     </Layout>
   );

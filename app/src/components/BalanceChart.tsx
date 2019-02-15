@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 export interface PortionProps {
-  width: number;
+  percentage: number;
   color?: string;
   token: string;
 }
@@ -55,9 +55,13 @@ const BarsWrapper = styled.div`
 const Caption = ({ data }: BalanceChartProps) => {
   return (
     <CaptionList>
-      {data.map(props => {
+      {data.map((props, i) => {
+        const propsWithColor = { ...props };
+        if (!propsWithColor.color) {
+          propsWithColor.color = DEFAULT_COLORS[i];
+        }
         return (
-          <CaptionItem key={`${props.token}-capitem`} {...props}>
+          <CaptionItem key={`${props.token}-cap-item`} {...propsWithColor}>
             <span /> {props.token}
           </CaptionItem>
         );
@@ -88,7 +92,7 @@ const CaptionItem = styled.li`
   }
 `;
 
-const Percentage = ({ width, token }: PortionProps) => <span>{`${width}%`}</span>;
+const Percentage = ({ percentage, token }: PortionProps) => <span>{`${percentage}%`}</span>;
 
 const Portion = styled.div`
   display: flex;
@@ -99,7 +103,7 @@ const Portion = styled.div`
 
   ${props => {
     return css`
-      width: ${props.width}%;
+      width: ${props.percentage}%;
       background-color: ${props.color};
     `;
   }}

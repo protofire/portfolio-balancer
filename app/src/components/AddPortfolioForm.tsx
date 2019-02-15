@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import logdown from 'logdown';
 import axios from 'axios';
@@ -85,7 +85,7 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
           if (nextBalance.token == token) {
             return {
               ...balance,
-              percentage: parseInt(newValue),
+              percentage: newValue ? parseInt(newValue) : 0,
             };
           }
 
@@ -101,6 +101,17 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
     setEmail(newValue);
   }, []);
 
+  const shouldDisableButton = useMemo(
+    () => {
+      return (
+        !email ||
+        balance.filter(b => b.percentage == 0).length > 0 ||
+        balance.reduce((acc, b) => acc + b.percentage, 0) !== 100
+      );
+    },
+    [email, balance],
+  );
+
   return isOpen ? (
     <>
       <Overlay />
@@ -110,7 +121,7 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
             <div onClick={handleClose}>X</div>
           </Close>
           <Title>Create Portfolio</Title>
-          <Chart data={balance.map(line => ({ ...line, width: line.percentage }))} />
+          <Chart data={balance} />
           <SettingsWrapper>
             <h4>Settings:</h4>
             <BalanceSettingList>
@@ -126,7 +137,9 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
               ))}
             </BalanceSettingList>
           </SettingsWrapper>
-          <Button onClick={handleCreate}>CREATE PORFOLIO</Button>
+          <Button disabled={shouldDisableButton} onClick={handleCreate}>
+            CREATE PORFOLIO
+          </Button>
         </Content>
       </Wrapper>
     </>

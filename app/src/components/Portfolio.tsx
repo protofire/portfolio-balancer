@@ -5,20 +5,29 @@ import Card from '../components/Card';
 import Button from '../components/Button';
 import BalanceChart from '../components/BalanceChart';
 
-const data = [
-  {
-    width: 45,
-    color: '#c1adf4',
-    token: 'ETH',
-  },
-  {
-    width: 55,
-    color: '#65b1cb',
-    token: 'DAI',
-  },
-];
+// const data = [
+//   {
+//     width: 45,
+//     color: '#c1adf4',
+//     token: 'ETH',
+//   },
+//   {
+//     width: 55,
+//     color: '#65b1cb',
+//     token: 'DAI',
+//   },
+// ];
 
-const Portfolio = () => {
+export interface PortionProps {
+  percentage: number;
+  token: string;
+}
+
+interface Props {
+  data: PortionProps[];
+}
+
+const Portfolio = ({ data }: Props) => {
   return (
     <PortfolioCard>
       <Title>Portfolio Name…</Title>
