@@ -2,6 +2,7 @@ var Router = require('koa-router')
 const Joi = require('joi')
 const validate = require('koa-joi-validate')
 const { Portfolio } = require('../lib/models')
+const { registerAddressWatch } = require('../lib/meerkat')
 
 var router = new Router()
 const portfolioValidator = validate({
@@ -20,6 +21,12 @@ const portfolioValidator = validate({
       .required()
   }
 })
+const portfolioInvestmentValidator = validate({
+  body: {
+    amount: Joi.number().required(),
+    address: Joi.string().required()
+  }
+})
 
 router.post('/', portfolioValidator, async (ctx, next) => {
   try {
@@ -32,8 +39,10 @@ router.post('/', portfolioValidator, async (ctx, next) => {
     }
     ctx.request.body.address = ctx.request.body.address.toLowerCase()
     const portfolio = new Portfolio(ctx.request.body)
-    const saved = await portfolio.save()
-    ctx.body = saved
+    portfolio.subscriptions = await registerAddressWatch(
+      ctx.request.body.address
+    )
+    ctx.body = await portfolio.save()
   } catch (error) {
     ctx.throw(400, error.message || 'Bad request')
   }
@@ -46,6 +55,17 @@ router.get('/:address', async (ctx, next) => {
     ctx.throw(404, 'No Portfolios found')
   }
   ctx.body = portfolios
+})
+
+router.patch('/:address', portfolioInvestmentValidator, async (ctx, next) => {
+  const address = ctx.params.address.toLowerCase()
+  const portfolios = await Portfolio.find({ address })
+  if (!portfolios || !portfolios.length) {
+    ctx.throw(404, 'No Portfolios found')
+  }
+  const portfolio = portfolios[0]
+  portfolio.investment = ctx.request.body
+  ctx.body = await portfolio.save()
 })
 
 module.exports = router
