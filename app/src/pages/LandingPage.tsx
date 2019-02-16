@@ -14,14 +14,21 @@ const HomePage = ({ history }: RouteComponentProps) => {
     <Wrapper>
       <Content>
         <Hero>
-          <h1>Welcome,</h1>
+          <h1>Hedge Your Crypto Portfolio</h1>
+          <br />
+          <h2>What is it and why you want to do it</h2>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-            quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-            numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+            Hedging your cryptocurrency portfolio <b>lowers the overall risk of your portfolio</b>, which is
+            important as cryptocurrency is naturally <b>risky due to its volatility</b>. In a volatile market
+            where <u>most cryptocurrencies are correlated</u> (the asset’s prices move similarly), a viable
+            way to hedge your crypto investment is to <b>move OUT of cryptocurrency</b> and into the US dollar
+            or even better <b>INTO MAKERDAO DAI</b>.
+          </p>
+          <h2>Don't stop there, invest some DAI into decentralized money market funds</h2>
+          <p>
+            These funds will wiselly invest their DAI by funding loans from the EthLend marketplace based on
+            clear rules (eg.: amount, duration, MPR, LTV, etc) <br />
+            The repayments of the loans will be distributed among the investors.
           </p>
           <GetStarted inline onClick={startHandler}>
             GET STARTED!
@@ -59,7 +66,7 @@ const Content = styled.section`
 
 const Hero = styled.div`
   width: 680px;
-  height: 352px;
+  height: 450px;
   border-radius: 10px;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.95);
@@ -69,6 +76,7 @@ const Hero = styled.div`
   h1 {
     font-size: 19px;
     font-weight: bold;
+    color: darkorange;
   }
 
   p {
