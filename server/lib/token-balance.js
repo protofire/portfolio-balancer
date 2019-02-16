@@ -1,11 +1,14 @@
 const Web3 = require('web3')
-const provider = 'https://rinkeby.infura.io/v3/9d3f3977e8b8403883283193f93f7de7'
+const assert = require('assert')
+
+assert(process.env.WEB3_PROVIDER, 'process.env.WEB3_PROVIDER is required')
+const provider = process.env.WEB3_PROVIDER
+const web3 = new Web3(new Web3.providers.HttpProvider(provider))
 
 async function getTokenBalance ({
   walletAddress,
   contractAddr
 }) {
-  const web3 = new Web3(new Web3.providers.HttpProvider(provider))
   const tknAddress = (walletAddress).substring(2)
   const contractData = ('0x70a08231000000000000000000000000' + tknAddress)
 
@@ -16,7 +19,7 @@ async function getTokenBalance ({
     }, function (err, result) {
       if (result) {
         const tokens = web3.utils.toBN(result).toString()
-        return resolve(web3.utils.fromWei(tokens, 'ether'))
+        return resolve(parseFloat(web3.utils.fromWei(tokens, 'ether')))
       } else {
         return reject(err)
       }
@@ -24,6 +27,14 @@ async function getTokenBalance ({
   })
 }
 
+async function getETHBalance ({
+  walletAddress
+}) {
+  var balance = await web3.eth.getBalance(walletAddress)
+  return parseFloat(web3.utils.fromWei(balance))
+}
+
 module.exports = {
-  getTokenBalance
+  getTokenBalance,
+  getETHBalance
 }

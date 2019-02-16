@@ -1,11 +1,11 @@
+const assert = require('assert')
+
+assert(process.env.MAILGUN_APIKEY, 'process.env.MAILGUN_APIKEY is required')
+assert(process.env.APP_URL, 'process.env.APP_URL is required')
+
 var apiKey = process.env.MAILGUN_APIKEY
 var appURL = process.env.APP_URL
-if (!apiKey) {
-  throw new Error('MAILGUN_APIKEY not configured. Add it to .env')
-}
-if (!appURL) {
-  throw new Error('APP_URL not configured. Add it to .env')
-}
+
 var domain = 'mg.cdpalert.org'
 var mailgun = require('mailgun-js')({
   apiKey,
