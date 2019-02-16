@@ -4,14 +4,18 @@
   "description": "Portfolio balancer Server",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently --kill-others 'npm run api' 'npm run bots'",
+    "api": "node index.js",
+    "bots": "node start-bots.js",
+    "test": "echo 'Error: no test specified' && exit 1"
   },
   "author": "Leo Lower <leo@protofire.io>",
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "^2.2.2",
+    "aave-js": "^1.0.4",
     "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",

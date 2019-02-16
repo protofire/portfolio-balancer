@@ -1,7 +1,7 @@
 var Router = require('koa-router')
 const Joi = require('joi')
 const validate = require('koa-joi-validate')
-const { Portfolio } = require('./models')
+const { Portfolio } = require('../lib/models')
 
 var router = new Router()
 const portfolioValidator = validate({
