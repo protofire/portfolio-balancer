@@ -35,6 +35,10 @@ async function getContractParams () {
   }
 }
 
+/**
+ * Gets the current status of the pool contract. Mostly its balance
+ * @return {Object}
+ */
 async function getPoolData () {
   const data = await poolContractInstance.methods.poolData.call()
   const liquidityLimit = await poolContractInstance.methods.liquidityLimit.call()
@@ -45,7 +49,12 @@ async function getPoolData () {
   }
 }
 
-async function investOnLoan (loanRequest) {
+/**
+ * Instructs the Pool to invest a specific amount on a specific loan
+ * @param  {Object} loanRequest The loan request that should be funded
+ * @param  {Number} amount The amount of DAI to transfer
+ */
+async function investOnLoan (loanRequest, amount) {
   // @TODO: implement this: call the contract
   console.error('Investing on loan', loanRequest)
 }

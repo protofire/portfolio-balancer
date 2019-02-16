@@ -3,6 +3,10 @@ const { sendNotification } = require('../lib/emails')
 const { Portfolio, Token } = require('../lib/models')
 const { getTokenBalance, getETHBalance } = require('../lib/token-balance')
 
+/**
+ * Updates all portfolios with current balances and token prices and notifies each
+ * user if re-balancing is required
+ */
 async function processPortfolioBacklog () {
   console.log('Processing portfolios...')
   let portfolios = await Portfolio.find({})

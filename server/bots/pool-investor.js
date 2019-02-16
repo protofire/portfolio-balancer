@@ -1,16 +1,19 @@
 require('dotenv').config()
 const { getPoolData, getContractParams, investOnLoan } = require('../lib/pool')
 
+/**
+ * Invests the available pool balance on loan requests that match the pool paramaters
+ */
 async function investPoolDAI () {
   const availableDAI = (await getPoolData()).balance
   const contractParams = await getContractParams()
   if (availableDAI > 0) {
     const allLoanRequests = await getAllLoanRequests()
-    const matchingRequests = await getMatchingLoanRequests(
+    const matchingLoanRequests = await getMatchingLoanRequests(
       contractParams,
       allLoanRequests
     )
-    const bestMatch = await sortLoanRequests(matchingRequests)[0]
+    const bestMatch = await sortLoanRequests(matchingLoanRequests)[0]
     if (bestMatch) {
       const amount = Math.min(availableDAI, bestMatch.loanAmount)
       await investOnLoan(
@@ -25,8 +28,11 @@ async function investPoolDAI () {
   }
 }
 
-// @TODO: replace mocked data with real ethlend loan requests
+/**
+ * Gets the list of all the loan requests from ETHLend
+ */
 async function getAllLoanRequests () {
+  // @TODO: replace mocked data with real ethlend loan requests
   return require('../data/all-loan-requests')
   // const { Marketplace } = require('aave-js')
   // // let Marketplace = require('aave-js/dist/lib/aave-js').Marketplace
@@ -42,6 +48,12 @@ async function getAllLoanRequests () {
   // return requestsData
 }
 
+/**
+ * Filters loan requests that match the pool contract parameters
+ * @param  {Object} contractParams  Current pool parameters
+ * @param  {Array} allLoanRequests EthLend loan requests
+ * @return {Array}                 ETHLend loan requests that match the pool params
+ */
 function getMatchingLoanRequests (contractParams, allLoanRequests) {
   return allLoanRequests.filter(loanRequest => {
     return (
@@ -61,12 +73,23 @@ function ltv (loanRequest) {
   )
 }
 
+/**
+ * Sorts the a list of loan requests acording to their generated revenue
+ * @param  {Array} loanRequests
+ * @return {Array}
+ */
 function sortLoanRequests (loanRequests) {
   return loanRequests.sort((a, b) => {
     return b.mpr - a.mpr
   })
 }
 
+/**
+ * Adjusts `amount` to the closest number that is multiple of the 5% of the max amount
+ * @param  {Number} amount
+ * @param  {Number} max
+ * @return {Number}
+ */
 function adjustTo5Percent (amount, max) {
   const fivePercent = max / 20
   return fivePercent * Math.floor(amount / fivePercent)
