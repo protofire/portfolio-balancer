@@ -21,6 +21,9 @@ const portfolioSchema = new mongoose.Schema({
     address: String,
     amount: Number
   },
+  subscriptions: {
+    type: [String]
+  },
   createdAt: {
     type: Date,
     default: Date.now()

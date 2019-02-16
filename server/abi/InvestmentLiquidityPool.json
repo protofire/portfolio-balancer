@@ -74,7 +74,7 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "liquidityPorcentage",
+      "name": "liquidityPercentage",
       "outputs": [
         {
           "name": "",
@@ -234,7 +234,7 @@
     {
       "inputs": [
         {
-          "name": "_liquidityPorcentage",
+          "name": "_liquidityPercentage",
           "type": "uint256"
         },
         {
@@ -404,7 +404,7 @@
   "deployedBytecode": "0x6080604052600436106101065763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416630fb5a6b4811461010b5780632e1a7d4d146101325780632eb81a081461015e5780633c2fee93146101915780633fa615b0146101d757806341d1f5be146101ec57806343cd8f7e146102015780634be42628146102165780636699fec31461027b57806366ad25be146102905780636fb49d73146102a557806370a08231146102ba5780637a2e44e5146102ed5780638de6928414610320578063a001ecdd14610359578063abff01101461036e578063dc90ef9814610383578063e7b18aa8146103b6578063fee151ae146103cb575b600080fd5b34801561011757600080fd5b5061012061043f565b60408051918252519081900360200190f35b34801561013e57600080fd5b5061015c6004803603602081101561015557600080fd5b5035610445565b005b34801561016a57600080fd5b506101206004803603602081101561018157600080fd5b5035600160a060020a03166108c2565b34801561019d57600080fd5b506101bb600480360360208110156101b457600080fd5b50356108d4565b60408051600160a060020a039092168252519081900360200190f35b3480156101e357600080fd5b506101206108fc565b3480156101f857600080fd5b50610120610902565b34801561020d57600080fd5b506101bb610908565b34801561022257600080fd5b5061022b610917565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561026757818101518382015260200161024f565b505050509050019250505060405180910390f35b34801561028757600080fd5b5061012061097a565b34801561029c57600080fd5b50610120610980565b3480156102b157600080fd5b50610120610986565b3480156102c657600080fd5b50610120600480360360208110156102dd57600080fd5b5035600160a060020a031661098c565b3480156102f957600080fd5b506101206004803603602081101561031057600080fd5b5035600160a060020a03166109a7565b34801561032c57600080fd5b5061015c6004803603604081101561034357600080fd5b50600160a060020a0381351690602001356109b9565b34801561036557600080fd5b50610120610d41565b34801561037a57600080fd5b506101bb610d47565b34801561038f57600080fd5b50610120600480360360208110156103a657600080fd5b5035600160a060020a0316610d56565b3480156103c257600080fd5b50610120610d68565b3480156103d757600080fd5b506103e0610d6e565b604080519b8c5260208c019a909a528a8a019890985260608a0196909652608089019490945260a088019290925260c087015260e0860152610100850152610120840152600160a060020a031661014083015251908190036101600190f35b60065481565b61047d816104716064610465600054600754610e7990919063ffffffff16565b9063ffffffff610ead16565b9063ffffffff610ed116565b600954604080517f70a082310000000000000000000000000000000000000000000000000000000081523060048201529051600160a060020a03909216916370a0823191602480820192602092909190829003018186803b1580156104e157600080fd5b505afa1580156104f5573d6000803e3d6000fd5b505050506040513d602081101561050b57600080fd5b505111610562576040805160e560020a62461bcd02815260206004820152601660248201527f696e73756666696369656e74206c697175696469747900000000000000000000604482015290519081900360640190fd5b6000811180156105815750336000908152600b60205260409020548111155b15156105fd576040805160e560020a62461bcd02815260206004820152602160248201527f696e73756666696369656e7420737562736372697074696f6e2062616c616e6360448201527f6500000000000000000000000000000000000000000000000000000000000000606482015290519081900360840190fd5b600654336000908152600c602052604090205461061f9163ffffffff610ed116565b4211610675576040805160e560020a62461bcd02815260206004820152601160248201527f63616e206e6f7420776974686472617720000000000000000000000000000000604482015290519081900360640190fd5b600354336000908152600b602052604081205490919061069b908463ffffffff610ee316565b11156106ee576007546106b4908363ffffffff610ee316565b600755336000908152600b60205260409020546106d7908363ffffffff610ee316565b336000908152600b602052604090205550806107cf565b336000908152600b6020526040902054600754610711908263ffffffff610ee316565b600755336000908152600b6020526040812055600a8054610736826000198301610ef8565b8154811061074057fe5b6000918252602080832090910154338352600d909152604090912054600a8054600160a060020a0390931692909190811061077757fe5b6000918252602090912001805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0392909216919091179055600a8054906107c0906000198301610ef8565b6107cb600a82610ef8565b5090505b600954604080517fa9059cbb000000000000000000000000000000000000000000000000000000008152336004820152602481018490529051600160a060020a039092169163a9059cbb916044808201926020929091908290030181600087803b15801561083c57600080fd5b505af1158015610850573d6000803e3d6000fd5b505050506040513d602081101561086657600080fd5b505115156108be576040805160e560020a62461bcd02815260206004820152600d60248201527f7472616e73666572206661696c00000000000000000000000000000000000000604482015290519081900360640190fd5b5050565b600d6020526000908152604090205481565b600a8054829081106108e257fe5b600091825260209091200154600160a060020a0316905081565b60035481565b60005481565b600954600160a060020a031681565b6060600a80548060200260200160405190810160405280929190818152602001828054801561096f57602002820191906000526020600020905b8154600160a060020a03168152600190910190602001808311610951575b505050505090505b90565b60025481565b60045481565b60055481565b600160a060020a03166000908152600b602052604090205490565b600b6020526000908152604090205481565b600954604080517fdd62ed3e000000000000000000000000000000000000000000000000000000008152600160a060020a0385811660048301523060248301529151919092169163dd62ed3e916044808301926020929190829003018186803b158015610a2557600080fd5b505afa158015610a39573d6000803e3d6000fd5b505050506040513d6020811015610a4f57600080fd5b5051811015610ace576040805160e560020a62461bcd02815260206004820152603360248201527f696e73756666696369656e7420616d6f756e74206f66206c697175646969747960448201527f20746f6b656e732061726520616c6c6f77656400000000000000000000000000606482015290519081900360840190fd5b600160a060020a0382166000908152600b60205260409020541515610ba257600254600a5410610b48576040805160e560020a62461bcd02815260206004820152601560248201527f7375627363726970746f7273206172652066756c6c0000000000000000000000604482015290519081900360640190fd5b600354811015610ba2576040805160e560020a62461bcd02815260206004820152601360248201527f696e73756666696369656e7420616d6f756e7400000000000000000000000000604482015290519081900360640190fd5b600754610bb5908263ffffffff610ed116565b600755600a8054600160a060020a0384166000818152600d60209081526040808320859055600185019095557fc65a7bb8d6351c1cf70c95a316cc6a92839c986682d98bc35f958f4883f9d2a8909301805473ffffffffffffffffffffffffffffffffffffffff1916909217909155600c8252828120429055600b9091522054610c3f9082610ed1565b600160a060020a0383166000818152600b602090815260408083209490945583517f23b872dd0000000000000000000000000000000000000000000000000000000081526004810184905230602482015260448101869052935192936323b872dd9360648083019491928390030190829087803b158015610cbf57600080fd5b505af1158015610cd3573d6000803e3d6000fd5b505050506040513d6020811015610ce957600080fd5b505115156108be576040805160e560020a62461bcd02815260206004820152601260248201527f7472616e736665722066726f6d206661696c0000000000000000000000000000604482015290519081900360640190fd5b60015481565b600854600160a060020a031681565b600c6020526000908152604090205481565b60075481565b600a54600754600954604080517f70a08231000000000000000000000000000000000000000000000000000000008152306004820152905160009485948594859485948594859485948594859485949392600160a060020a0316916370a08231916024808301926020929190829003018186803b158015610dee57600080fd5b505afa158015610e02573d6000803e3d6000fd5b505050506040513d6020811015610e1857600080fd5b810190808051906020019092919050505060005483600254600354600454600554600654600154600860009054906101000a9004600160a060020a03169b509b509b509b509b509b509b509b509b509b509b5050909192939495969798999a565b6000821515610e8a57506000610ea7565b828202828482811515610e9957fe5b0414610ea457600080fd5b90505b92915050565b6000808211610ebb57600080fd5b60008284811515610ec857fe5b04949350505050565b600082820183811015610ea457600080fd5b600082821115610ef257600080fd5b50900390565b815481835581811115610f1c57600083815260209020610f1c918101908301610f21565b505050565b61097791905b80821115610f3b5760008155600101610f27565b509056fea165627a7a72305820623a57219aad023e1ecaffa9386b7dee4e753ad7e8a160456efa08ac958a98f10029",
   "sourceMap": "330:4978:0:-;;;1026:1284;8:9:-1;5:2;;;30:1;27;20:12;5:2;1026:1284:0;;;;;;;;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;-1:-1;1026:1284:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1353:1;1329:25;;;;;:55;;;1381:3;1358:20;:26;1329:55;1321:110;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1466:1;1449:14;:18;:44;;;;;1488:5;1471:14;:22;1449:44;1441:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1553:1;1532:18;:22;:49;;;;;1579:2;1558:18;:23;1532:49;1524:97;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1646:1;1639:4;:8;:24;;;;;1658:5;1651:4;:12;1639:24;1631:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1729:1;1722:4;:8;:25;;;;;1741:6;1734:4;:13;1722:25;1714:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1809:1;1796:9;:14;;:32;;;;;1826:2;1814:9;:14;1796:32;1788:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1872:21:0;;;;1864:48;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1930:29:0;;;;1922:57;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1990:19;:42;;;2050:13;:30;;;;2090:17;:38;;;;-1:-1:-1;2138:6:0;:16;;;;2164:3;:10;2184:3;:10;2215:8;;;2226:7;2215:18;2204:29;;2244:6;:16;;-1:-1:-1;;;;;2244:16:0;;;-1:-1:-1;;;;;;2244:16:0;;;;;;;2270:14;:32;;;;;;;;;;;330:4978;;;;;;;;",
   "deployedSourceMap": "330:4978:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;589:23;;8:9:-1;5:2;;;30:1;27;20:12;5:2;589:23:0;;;;;;;;;;;;;;;;;;;;3183:1288;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3183:1288:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3183:1288:0;;;;;941:51;;8:9:-1;5:2;;;30:1;27;20:12;5:2;941:51:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;941:51:0;-1:-1:-1;;;;;941:51:0;;;728:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;728:29:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;728:29:0;;;;;;;-1:-1:-1;;;;;728:29:0;;;;;;;;;;;;;;514:21;;8:9:-1;5:2;;;30:1;27;20:12;5:2;514:21:0;;;;402:34;;8:9:-1;5:2;;;30:1;27;20:12;5:2;402:34:0;;;;693:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;693:29:0;;;;4608:102;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4608:102:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;4608:102:0;;;;;;;;;;;;;;;;;476:32;;8:9:-1;5:2;;;30:1;27;20:12;5:2;476:32:0;;;;541:18;;8:9:-1;5:2;;;30:1;27;20:12;5:2;541:18:0;;;;565;;8:9:-1;5:2;;;30:1;27;20:12;5:2;565:18:0;;;;4477:125;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4477:125:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;4477:125:0;-1:-1:-1;;;;;4477:125:0;;;764:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;764:53:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;764:53:0;-1:-1:-1;;;;;764:53:0;;;2320:857;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2320:857:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;;;;;;2320:857:0;;;;;;;;;442:28;;8:9:-1;5:2;;;30:1;27;20:12;5:2;442:28:0;;;;666:21;;8:9:-1;5:2;;;30:1;27;20:12;5:2;666:21:0;;;;845:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;845:53:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;845:53:0;-1:-1:-1;;;;;845:53:0;;;618:37;;8:9:-1;5:2;;;30:1;27;20:12;5:2;618:37:0;;;;4716:589;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4716:589:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;4716:589:0;;;;;;;;;;;;;;589:23;;;;:::o;3183:1288::-;3318:68;3379:6;3318:56;3370:3;3318:47;3345:19;;3318:22;;:26;;:47;;;;:::i;:::-;:51;:56;:51;:56;:::i;:::-;:60;:68;:60;:68;:::i;:::-;3262:14;;3255:47;;;;;;3296:4;3255:47;;;;;;-1:-1:-1;;;;;3262:14:0;;;;3255:32;;:47;;;;;;;;;;;;;;;3262:14;3255:47;;;5:2:-1;;;;30:1;27;20:12;5:2;3255:47:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3255:47:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3255:47:0;:131;3234:191;;;;;-1:-1:-1;;;;;3234:191:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;3452:1;3443:6;:10;:54;;;;-1:-1:-1;3476:10:0;3457:30;;;;:18;:30;;;;;;:40;-1:-1:-1;3457:40:0;3443:54;3435:100;;;;;;;-1:-1:-1;;;;;3435:100:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3594:8;;3578:10;3559:30;;;;:18;:30;;;;;;:44;;;:34;:44;:::i;:::-;3553:3;:50;3545:80;;;;;-1:-1:-1;;;;;3545:80:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;3726:6;;3700:10;3636:22;3681:30;;;:18;:30;;;;;;3636:22;;3726:6;3681:42;;3716:6;3681:42;:34;:42;:::i;:::-;:51;3677:692;;;3773:22;;:34;;3800:6;3773:34;:26;:34;:::i;:::-;3748:22;:59;3873:10;3854:30;;;;:18;:30;;;;;;:42;;3889:6;3854:42;:34;:42;:::i;:::-;3840:10;3821:30;;;;:18;:30;;;;;:75;-1:-1:-1;3927:6:0;3677:692;;;4014:10;3966:26;3995:30;;;:18;:30;;;;;;4064:22;;:46;;3995:30;4064:46;:26;:46;:::i;:::-;4039:22;:71;4143:10;4157:1;4124:30;;;:18;:30;;;;;:34;4217:12;4230:21;;;4217:12;-1:-1:-1;;4230:21:0;;;:::i;:::-;4217:35;;;;;;;;;;;;;;;;;;;;4202:10;4185:28;;:16;:28;;;;;;;;4172:12;:42;;-1:-1:-1;;;;;4217:35:0;;;;4172:12;;4185:28;4172:42;;;;;;;;;;;;;;;:80;;-1:-1:-1;;4172:80:0;-1:-1:-1;;;;;4172:80:0;;;;;;;;;;4288:12;:21;;;;;-1:-1:-1;;4288:21:0;;;:::i;:::-;4266:43;:12;:43;;:::i;:::-;-1:-1:-1;4340:18:0;-1:-1:-1;3677:692:0;4394:14;;4387:59;;;;;;4419:10;4387:59;;;;;;;;;;;;-1:-1:-1;;;;;4394:14:0;;;;4387:31;;:59;;;;;;;;;;;;;;;4394:14;;4387:59;;;5:2:-1;;;;30:1;27;20:12;5:2;4387:59:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;4387:59:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;4387:59:0;4379:85;;;;;;;-1:-1:-1;;;;;4379:85:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;3183:1288;;:::o;941:51::-;;;;;;;;;;;;;:::o;728:29::-;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;728:29:0;;-1:-1:-1;728:29:0;:::o;514:21::-;;;;:::o;402:34::-;;;;:::o;693:29::-;;;-1:-1:-1;;;;;693:29:0;;:::o;4608:102::-;4656:16;4691:12;4684:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;4684:19:0;;;;;;;;;;;;;;;;;;;;;;;4608:102;;:::o;476:32::-;;;;:::o;541:18::-;;;;:::o;565:::-;;;;:::o;4477:125::-;-1:-1:-1;;;;;4564:31:0;4538:7;4564:31;;;:18;:31;;;;;;;4477:125::o;764:53::-;;;;;;;;;;;;;:::o;2320:857::-;2418:14;;2411:60;;;;;;-1:-1:-1;;;;;2411:60:0;;;;;;;2465:4;2411:60;;;;;;2418:14;;;;;2411:32;;:60;;;;;;;;;;;;;;2418:14;2411:60;;;5:2:-1;;;;30:1;27;20:12;5:2;2411:60:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2411:60:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;2411:60:0;2401:70;;;2393:134;;;;;-1:-1:-1;;;;;2393:134:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;2550:31:0;;;;;;:18;:31;;;;;;:36;2546:202;;;2632:17;;2610:12;:19;:39;2602:73;;;;;-1:-1:-1;;;;;2602:73:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;2707:6;;2697:16;;;2689:48;;;;;-1:-1:-1;;;;;2689:48:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;2791:22;;:34;;2818:6;2791:34;:26;:34;:::i;:::-;2766:22;:59;2867:12;:19;;-1:-1:-1;;;;;2835:29:0;;;;;;:16;:29;;;;;;;;:51;;;39:1:-1;23:18;;45:23;;;2896:30:0;;;;;;-1:-1:-1;;2896:30:0;;;;;;;2936:18;:31;;;;;2970:3;2936:37;;3017:18;:31;;;;;:43;;3053:6;3017:35;:43::i;:::-;-1:-1:-1;;;;;2983:31:0;;;;;;:18;:31;;;;;;;;:77;;;;3079:68;;;;;;;;;;;3133:4;3079:68;;;;;;;;;;;;2983:31;;3079:32;;:68;;;;;;;;;;;;;;2983:31;3079:68;;;5:2:-1;;;;30:1;27;20:12;5:2;3079:68:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3079:68:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3079:68:0;3071:99;;;;;;;-1:-1:-1;;;;;3071:99:0;;;;;;;;;;;;;;;;;;;;;;;;;;;442:28;;;;:::o;666:21::-;;;-1:-1:-1;;;;;666:21:0;;:::o;845:53::-;;;;;;;;;;;;;:::o;618:37::-;;;;:::o;4716:589::-;4988:12;:19;5035:22;;5074:14;;5067:47;;;;;;5108:4;5067:47;;;;;;4766:7;;;;;;;;;;;;;;;;;;;;;;4988:19;5035:22;-1:-1:-1;;;;;5074:14:0;;5067:32;;:47;;;;;;;;;;;;;;5074:14;5067:47;;;5:2:-1;;;;30:1;27;20:12;5:2;5067:47:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;5067:47:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;5067:47:0;;;;;;;;;;;;;;;;5124:19;;5154:17;5181;;5208:6;;5224:3;;5237;;5250:8;;5268:13;;5291:6;;;;;;;;;-1:-1:-1;;;;;5291:6:0;5017:281;;;;;;;;;;;;;;;;;;;;;;;4716:589;;;;;;;;;;;:::o;229:421:3:-;287:7;527:6;;523:45;;;-1:-1:-1;556:1:3;549:8;;523:45;590:5;;;594:1;590;:5;613;;;;;;;;:10;605:19;;;;;;642:1;-1:-1:-1;229:421:3;;;;;:::o;778:296::-;836:7;929:5;;;921:14;;;;;;945:9;961:1;957;:5;;;;;;;;;778:296;-1:-1:-1;;;;778:296:3:o;1431:145::-;1489:7;1520:5;;;1543:6;;;;1535:15;;;;;1205:145;1263:7;1290:6;;;;1282:15;;;;;;-1:-1:-1;1319:5:3;;;1205:145::o;330:4978:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;",
-  "source": "pragma solidity 0.5.0;\n\nimport \"openzeppelin-solidity/contracts/math/SafeMath.sol\";\nimport \"openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\n\n/**\n * @title Investment Liquidity Pool.\n * @notice Pool that gather liquidity tokens to be invest on loans by a broker.\n * @author Anibal Catalán <anibalcatalanf@gmail.com>\n */\ncontract InvestmentLiquidityPool {\n    using SafeMath for uint256;\n\n    uint256 public liquidityPorcentage;\n    uint256 public feePercentage;\n    uint256 public subscriptorsLimit;\n    uint256 public minCap;\n    uint256 public mpr;\n    uint256 public ltv;\n    uint256 public duration;\n    uint256 public theoreticalPoolBalance;\n    \n    address public broker;\n    address public liquidityToken;\n    address[] public subscriptors;\n\n    mapping(address => uint256) public subscriptionAmount; //subscriptor->amount\n    mapping(address => uint256) public subscriptionMoment; //subscriptor->subscriptionTimestamp\n    mapping(address => uint256) public subscriptorIndex; // subscriptor->arrayIndex\n\n    constructor(\n        uint256 _liquidityPorcentage,\n        uint256 _feePercentage,\n        uint256 _subscriptorsLimit,\n        uint256 _minCap,\n        uint256 _mpr,\n        uint256 _ltv,\n        uint256 _duration,\n        address _broker,\n        address _liquidityToken\n    ) public {\n        require(_liquidityPorcentage >= 0 && _liquidityPorcentage < 100, \"liquidity percentage at stock out of range\");\n        require(_feePercentage > 0 && _feePercentage < 10000, \"fee out of range\");\n        require(_subscriptorsLimit > 0 && _subscriptorsLimit < 21, \"number of subscriptors out of range\");\n        require(_mpr > 0 && _mpr < 10000, \"monthly percentage rate out of range\");\n        require(_ltv > 0 && _ltv < 100000, \"loan to value out of range\");\n        require(_duration >= 0 && _duration < 13, \"duration out of range\");\n        require(_broker != address(0), \"ivalid address\");\n        require(_liquidityToken != address(0), \"invalid address\");\n\n        liquidityPorcentage = _liquidityPorcentage;        \n        feePercentage = _feePercentage;\n        subscriptorsLimit = _subscriptorsLimit;\n        minCap = _minCap;\n        mpr = _mpr;\n        ltv = _ltv;\n        duration = duration * 30 days;\n\n        broker = _broker;\n        liquidityToken = _liquidityToken;\n\n    }\n    \n    function subscribe(address subscriptor, uint256 amount) public {\n        require(amount >= IERC20(liquidityToken).allowance(subscriptor, address(this)), \"insufficient amount of liqudiity tokens are allowed\");\n        \n        if (subscriptionAmount[subscriptor] == 0) {\n            require(subscriptors.length < subscriptorsLimit, \"subscriptors are full\");\n            require(amount >= minCap, \"insufficient amount\");\n        }\n        \n        theoreticalPoolBalance = theoreticalPoolBalance.add(amount);\n        subscriptorIndex[subscriptor] = subscriptors.length;\n        subscriptors.push(subscriptor);\n        subscriptionMoment[subscriptor] = now;\n        subscriptionAmount[subscriptor] = subscriptionAmount[subscriptor].add(amount);\n\n        require(IERC20(subscriptor).transferFrom(subscriptor, address(this), amount), \"transfer from fail\");\n    }\n\n    function withdraw(uint256 amount) public {\n        require(\n            IERC20(liquidityToken).balanceOf(address(this)) > \n            theoreticalPoolBalance.mul(liquidityPorcentage).div(100).add(amount),\n            \"insufficient liquidity\");\n        require(amount > 0 && subscriptionAmount[msg.sender] >= amount, \"insufficient subscription balance\");\n        require(now > subscriptionMoment[msg.sender].add(duration), \"can not withdraw \");\n\n        uint256 transferAmount;\n        \n        if (subscriptionAmount[msg.sender].sub(amount) > minCap) {\n            theoreticalPoolBalance = theoreticalPoolBalance.sub(amount);\n            subscriptionAmount[msg.sender] = subscriptionAmount[msg.sender].sub(amount);\n            transferAmount = amount;  \n        } else {\n            uint256 subscriptorBalance = subscriptionAmount[msg.sender];\n            theoreticalPoolBalance = theoreticalPoolBalance.sub(subscriptorBalance);\n            subscriptionAmount[msg.sender] = 0;\n            subscriptors[subscriptorIndex[msg.sender]] = subscriptors[subscriptors.length--];\n            subscriptors.length = subscriptors.length--;\n            transferAmount = subscriptorBalance;\n        }\n\n        require(IERC20(liquidityToken).transfer(msg.sender, transferAmount), \"transfer fail\");\n    }\n\n    function balanceOf(address subscriptor) public view returns (uint256) {\n        return subscriptionAmount[subscriptor];\n    }\n\n    function showSubscriptors() public view returns(address[] memory) {\n        return subscriptors;\n    }\n\n    function poolData() public view returns (\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        address) \n    {\n        uint256 numOfSubscriptors = subscriptors.length;\n        return ( \n        theoreticalPoolBalance,\n        IERC20(liquidityToken).balanceOf(address(this)),\n        liquidityPorcentage, \n        numOfSubscriptors,\n        subscriptorsLimit,\n        minCap,\n        mpr,\n        ltv,\n        duration,\n        feePercentage,\n        broker);\n    }\n\n}\n\n\n\n",
+  "source": "pragma solidity 0.5.0;\n\nimport \"openzeppelin-solidity/contracts/math/SafeMath.sol\";\nimport \"openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\";\n\n\n/**\n * @title Investment Liquidity Pool.\n * @notice Pool that gather liquidity tokens to be invest on loans by a broker.\n * @author Anibal Catalán <anibalcatalanf@gmail.com>\n */\ncontract InvestmentLiquidityPool {\n    using SafeMath for uint256;\n\n    uint256 public liquidityPercentage;\n    uint256 public feePercentage;\n    uint256 public subscriptorsLimit;\n    uint256 public minCap;\n    uint256 public mpr;\n    uint256 public ltv;\n    uint256 public duration;\n    uint256 public theoreticalPoolBalance;\n    \n    address public broker;\n    address public liquidityToken;\n    address[] public subscriptors;\n\n    mapping(address => uint256) public subscriptionAmount; //subscriptor->amount\n    mapping(address => uint256) public subscriptionMoment; //subscriptor->subscriptionTimestamp\n    mapping(address => uint256) public subscriptorIndex; // subscriptor->arrayIndex\n\n    constructor(\n        uint256 _liquidityPercentage,\n        uint256 _feePercentage,\n        uint256 _subscriptorsLimit,\n        uint256 _minCap,\n        uint256 _mpr,\n        uint256 _ltv,\n        uint256 _duration,\n        address _broker,\n        address _liquidityToken\n    ) public {\n        require(_liquidityPercentage >= 0 && _liquidityPercentage < 100, \"liquidity percentage at stock out of range\");\n        require(_feePercentage > 0 && _feePercentage < 10000, \"fee out of range\");\n        require(_subscriptorsLimit > 0 && _subscriptorsLimit < 21, \"number of subscriptors out of range\");\n        require(_mpr > 0 && _mpr < 10000, \"monthly percentage rate out of range\");\n        require(_ltv > 0 && _ltv < 100000, \"loan to value out of range\");\n        require(_duration >= 0 && _duration < 13, \"duration out of range\");\n        require(_broker != address(0), \"ivalid address\");\n        require(_liquidityToken != address(0), \"invalid address\");\n\n        liquidityPercentage = _liquidityPercentage;        \n        feePercentage = _feePercentage;\n        subscriptorsLimit = _subscriptorsLimit;\n        minCap = _minCap;\n        mpr = _mpr;\n        ltv = _ltv;\n        duration = duration * 30 days;\n\n        broker = _broker;\n        liquidityToken = _liquidityToken;\n\n    }\n    \n    function subscribe(address subscriptor, uint256 amount) public {\n        require(amount >= IERC20(liquidityToken).allowance(subscriptor, address(this)), \"insufficient amount of liqudiity tokens are allowed\");\n        \n        if (subscriptionAmount[subscriptor] == 0) {\n            require(subscriptors.length < subscriptorsLimit, \"subscriptors are full\");\n            require(amount >= minCap, \"insufficient amount\");\n        }\n        \n        theoreticalPoolBalance = theoreticalPoolBalance.add(amount);\n        subscriptorIndex[subscriptor] = subscriptors.length;\n        subscriptors.push(subscriptor);\n        subscriptionMoment[subscriptor] = now;\n        subscriptionAmount[subscriptor] = subscriptionAmount[subscriptor].add(amount);\n\n        require(IERC20(subscriptor).transferFrom(subscriptor, address(this), amount), \"transfer from fail\");\n    }\n\n    function withdraw(uint256 amount) public {\n        require(\n            IERC20(liquidityToken).balanceOf(address(this)) > \n            theoreticalPoolBalance.mul(liquidityPercentage).div(100).add(amount),\n            \"insufficient liquidity\");\n        require(amount > 0 && subscriptionAmount[msg.sender] >= amount, \"insufficient subscription balance\");\n        require(now > subscriptionMoment[msg.sender].add(duration), \"can not withdraw \");\n\n        uint256 transferAmount;\n        \n        if (subscriptionAmount[msg.sender].sub(amount) > minCap) {\n            theoreticalPoolBalance = theoreticalPoolBalance.sub(amount);\n            subscriptionAmount[msg.sender] = subscriptionAmount[msg.sender].sub(amount);\n            transferAmount = amount;  \n        } else {\n            uint256 subscriptorBalance = subscriptionAmount[msg.sender];\n            theoreticalPoolBalance = theoreticalPoolBalance.sub(subscriptorBalance);\n            subscriptionAmount[msg.sender] = 0;\n            subscriptors[subscriptorIndex[msg.sender]] = subscriptors[subscriptors.length--];\n            subscriptors.length = subscriptors.length--;\n            transferAmount = subscriptorBalance;\n        }\n\n        require(IERC20(liquidityToken).transfer(msg.sender, transferAmount), \"transfer fail\");\n    }\n\n    function balanceOf(address subscriptor) public view returns (uint256) {\n        return subscriptionAmount[subscriptor];\n    }\n\n    function showSubscriptors() public view returns(address[] memory) {\n        return subscriptors;\n    }\n\n    function poolData() public view returns (\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        uint256,\n        address) \n    {\n        uint256 numOfSubscriptors = subscriptors.length;\n        return ( \n        theoreticalPoolBalance,\n        IERC20(liquidityToken).balanceOf(address(this)),\n        liquidityPercentage, \n        numOfSubscriptors,\n        subscriptorsLimit,\n        minCap,\n        mpr,\n        ltv,\n        duration,\n        feePercentage,\n        broker);\n    }\n\n}\n\n\n\n",
   "sourcePath": "/home/leolower/www/protofire/portfolio-balancer/Investment-Liquidity-Pool/contracts/InvestmentLiquidityPool.sol",
   "ast": {
     "absolutePath": "/home/leolower/www/protofire/portfolio-balancer/Investment-Liquidity-Pool/contracts/InvestmentLiquidityPool.sol",
@@ -491,7 +491,7 @@
           {
             "constant": false,
             "id": 8,
-            "name": "liquidityPorcentage",
+            "name": "liquidityPercentage",
             "nodeType": "VariableDeclaration",
             "scope": 507,
             "src": "402:34:0",
@@ -957,7 +957,7 @@
                           "leftExpression": {
                             "argumentTypes": null,
                             "id": 63,
-                            "name": "_liquidityPorcentage",
+                            "name": "_liquidityPercentage",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 43,
@@ -1009,7 +1009,7 @@
                           "leftExpression": {
                             "argumentTypes": null,
                             "id": 66,
-                            "name": "_liquidityPorcentage",
+                            "name": "_liquidityPercentage",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 43,
@@ -2357,7 +2357,7 @@
                     "leftHandSide": {
                       "argumentTypes": null,
                       "id": 146,
-                      "name": "liquidityPorcentage",
+                      "name": "liquidityPercentage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 8,
@@ -2372,7 +2372,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "id": 147,
-                      "name": "_liquidityPorcentage",
+                      "name": "_liquidityPercentage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 43,
@@ -2813,7 +2813,7 @@
                 {
                   "constant": false,
                   "id": 43,
-                  "name": "_liquidityPorcentage",
+                  "name": "_liquidityPercentage",
                   "nodeType": "VariableDeclaration",
                   "scope": 185,
                   "src": "1047:28:0",
@@ -4672,7 +4672,7 @@
                                     {
                                       "argumentTypes": null,
                                       "id": 297,
-                                      "name": "liquidityPorcentage",
+                                      "name": "liquidityPercentage",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
                                       "referencedDeclaration": 8,
@@ -7115,7 +7115,7 @@
                       {
                         "argumentTypes": null,
                         "id": 494,
-                        "name": "liquidityPorcentage",
+                        "name": "liquidityPercentage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 8,
@@ -7655,7 +7655,7 @@
           {
             "constant": false,
             "id": 8,
-            "name": "liquidityPorcentage",
+            "name": "liquidityPercentage",
             "nodeType": "VariableDeclaration",
             "scope": 507,
             "src": "402:34:0",
@@ -8121,7 +8121,7 @@
                           "leftExpression": {
                             "argumentTypes": null,
                             "id": 63,
-                            "name": "_liquidityPorcentage",
+                            "name": "_liquidityPercentage",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 43,
@@ -8173,7 +8173,7 @@
                           "leftExpression": {
                             "argumentTypes": null,
                             "id": 66,
-                            "name": "_liquidityPorcentage",
+                            "name": "_liquidityPercentage",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 43,
@@ -9521,7 +9521,7 @@
                     "leftHandSide": {
                       "argumentTypes": null,
                       "id": 146,
-                      "name": "liquidityPorcentage",
+                      "name": "liquidityPercentage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 8,
@@ -9536,7 +9536,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "id": 147,
-                      "name": "_liquidityPorcentage",
+                      "name": "_liquidityPercentage",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 43,
@@ -9977,7 +9977,7 @@
                 {
                   "constant": false,
                   "id": 43,
-                  "name": "_liquidityPorcentage",
+                  "name": "_liquidityPercentage",
                   "nodeType": "VariableDeclaration",
                   "scope": 185,
                   "src": "1047:28:0",
@@ -11836,7 +11836,7 @@
                                     {
                                       "argumentTypes": null,
                                       "id": 297,
-                                      "name": "liquidityPorcentage",
+                                      "name": "liquidityPercentage",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
                                       "referencedDeclaration": 8,
@@ -14279,7 +14279,7 @@
                       {
                         "argumentTypes": null,
                         "id": 494,
-                        "name": "liquidityPorcentage",
+                        "name": "liquidityPercentage",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 8,
@@ -14744,10 +14744,22 @@
       "links": {},
       "address": "0x1363CCC86eEfaCc49eFDa7Cf7D9358d8Fe6Cb02d",
       "transactionHash": "0x3a837a0c8dfc68b6ac8bc2b4a3f52dce160887ab4a3ac75aafa3236989570bf7"
+    },
+    "1550318684200": {
+      "events": {},
+      "links": {},
+      "address": "0xC4424C0B33B1dDa07DC64bE463D925FF252118c4",
+      "transactionHash": "0x94ca8ad05fa07ae79099a99eb0e8fbbe9841957532ec3925e58639b79877fa4b"
+    },
+    "1550338762020": {
+      "events": {},
+      "links": {},
+      "address": "0xC4402Af73493a410D5Cb7B64C088728a85274f9D",
+      "transactionHash": "0xf46b669ecc406e68cec855741f42ee4443f0d43bb6480867212de9aa84135c1e"
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-02-16T01:48:16.243Z",
+  "updatedAt": "2019-02-16T17:39:57.666Z",
   "devdoc": {
     "author": "Anibal Catalán <anibalcatalanf@gmail.com>",
     "methods": {},

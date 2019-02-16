@@ -2,6 +2,7 @@ var Router = require('koa-router')
 const Joi = require('joi')
 const validate = require('koa-joi-validate')
 const { Portfolio } = require('../lib/models')
+const { registerAddressWatch } = require('../lib/meerkat')
 
 var router = new Router()
 const portfolioValidator = validate({
@@ -38,8 +39,10 @@ router.post('/', portfolioValidator, async (ctx, next) => {
     }
     ctx.request.body.address = ctx.request.body.address.toLowerCase()
     const portfolio = new Portfolio(ctx.request.body)
-    const saved = await portfolio.save()
-    ctx.body = saved
+    portfolio.subscriptions = await registerAddressWatch(
+      ctx.request.body.address
+    )
+    ctx.body = await portfolio.save()
   } catch (error) {
     ctx.throw(400, error.message || 'Bad request')
   }

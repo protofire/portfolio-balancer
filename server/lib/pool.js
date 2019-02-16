@@ -19,8 +19,8 @@ const poolContractInstance = new web3.eth.Contract(
 
 async function getContractParams () {
   return {
-    liquidityPorcentage: parseFloat(
-      await poolContractInstance.methods.liquidityPorcentage.call()
+    liquidityPercentage: parseFloat(
+      await poolContractInstance.methods.liquidityPercentage.call()
     ),
     feePorcentage: parseFloat(
       await poolContractInstance.methods.feePercentage.call()
