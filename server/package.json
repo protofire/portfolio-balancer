@@ -7,10 +7,18 @@
     "start": "concurrently --kill-others 'npm run api' 'npm run bots'",
     "api": "node index.js",
     "bots": "node start-bots.js",
-    "test": "echo 'Error: no test specified' && exit 1"
+    "format": "prettier-standard '**/*.js'",
+    "precommit": "lint-staged",
+    "test": "echo 'Error: no test specified' && exit 0"
   },
   "author": "Leo Lower <leo@protofire.io>",
   "license": "MIT",
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.12.1",
+    "prettier-standard": "^8.0.1"
+  },
   "dependencies": {
     "@koa/cors": "^2.2.2",
     "aave-js": "^1.0.4",
@@ -24,5 +32,18 @@
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.4.12",
     "web3": "^1.0.0-beta.46"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "prettier-standard",
+        "git add"
+      ]
+    }
   }
 }

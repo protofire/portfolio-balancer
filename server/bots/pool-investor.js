@@ -1,9 +1,5 @@
 require('dotenv').config()
-const {
-  getPoolData,
-  getContractParams,
-  investOnLoan
-} = require('../lib/pool')
+const { getPoolData, getContractParams, investOnLoan } = require('../lib/pool')
 
 async function investPoolDAI () {
   const availableDAI = (await getPoolData()).balance
@@ -11,7 +7,10 @@ async function investPoolDAI () {
   // @TODO: what if the available balance is too small to invest?
   if (availableDAI > 0) {
     const allLoanRequests = await getAllLoanRequests()
-    const matchingRequests = await getMatchingLoanRequests(contractParams, allLoanRequests)
+    const matchingRequests = await getMatchingLoanRequests(
+      contractParams,
+      allLoanRequests
+    )
     const bestMatch = await sortLoanRequests(matchingRequests)[0]
     if (bestMatch) {
       const amount = Math.min(availableDAI, bestMatch.loanAmount)
@@ -31,7 +30,7 @@ async function getAllLoanRequests () {
   // // let Marketplace = require('aave-js/dist/lib/aave-js').Marketplace
   // const assert = require('assert')
 
-// assert(process.env.ETHLEND_API_SECRET_KEY, 'process.env.ETHLEND_API_SECRET_KEY is required')
+  // assert(process.env.ETHLEND_API_SECRET_KEY, 'process.env.ETHLEND_API_SECRET_KEY is required')
 
   // const marketplace = new Marketplace(process.env.ETHLEND_API_SECRET_KEY)
   // const allRequestsAddresses = await marketplace.requests.getAllAddresses()
@@ -49,10 +48,12 @@ async function getAllLoanRequests () {
 function getMatchingLoanRequests (contractParams, allLoanRequests) {
   return allLoanRequests.filter(loanRequest => {
     // @TODO: other parameters need to be checked
-    return loanRequest.state === 'Funding' &&
+    return (
+      loanRequest.state === 'Funding' &&
       loanRequest.moe === 'DAI' &&
       loanRequest.mpr >= contractParams.mpr &&
       loanRequest.duration === contractParams.duration
+    )
   })
 }
 

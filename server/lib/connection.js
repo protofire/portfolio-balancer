@@ -4,11 +4,8 @@ const dbUri = process.env.DB_URI
 
 const mongoose = require('mongoose')
 
-mongoose.connect(
-  dbUri,
-  {
-    useNewUrlParser: true
-  }
-)
+mongoose.connect(dbUri, {
+  useNewUrlParser: true
+})
 
 module.exports = mongoose

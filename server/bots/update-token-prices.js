@@ -1,8 +1,6 @@
 require('dotenv').config()
 const axios = require('axios')
-const {
-  Token
-} = require('../lib/models')
+const { Token } = require('../lib/models')
 
 const tokens = ['ethereum', 'dai']
 
@@ -22,7 +20,9 @@ async function updateTokenPrices () {
  * @return {Object}
  */
 async function getTokenPrice (token) {
-  const response = await axios.get('https://api.coinmarketcap.com/v1/ticker/' + token)
+  const response = await axios.get(
+    'https://api.coinmarketcap.com/v1/ticker/' + token
+  )
   return {
     token,
     data: response.data[0]
@@ -35,7 +35,12 @@ async function getTokenPrice (token) {
  * @return {Object}
  */
 async function recordNewPrice (tokenData) {
-  console.log('Updating price of', tokenData.token, 'to', tokenData.data.price_usd)
+  console.log(
+    'Updating price of',
+    tokenData.token,
+    'to',
+    tokenData.data.price_usd
+  )
   const tokens = await Token.find({
     id: tokenData.token
   })

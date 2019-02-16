@@ -12,10 +12,18 @@ async function processPortfolioBacklog () {
     const balances = await getTokenBalances(portfolios[i].address)
     await updatePortfolioStatus(portfolios[i], balances, ethPrice, daiPrice)
     if (!isPortfolioBalanced(portfolios[i], balances, 1)) {
-      console.log('Portfolio not balanced', portfolios[i].currentStatus.map(a => a.percentage), portfolios[i].tokens.map(a => a.percentage))
+      console.log(
+        'Portfolio not balanced',
+        portfolios[i].currentStatus.map(a => a.percentage),
+        portfolios[i].tokens.map(a => a.percentage)
+      )
       await sendNotification(portfolios[i].email)
     } else {
-      console.log('Portfolio balanced', portfolios[i].currentStatus.map(a => a.percentage), portfolios[i].tokens.map(a => a.percentage))
+      console.log(
+        'Portfolio balanced',
+        portfolios[i].currentStatus.map(a => a.percentage),
+        portfolios[i].tokens.map(a => a.percentage)
+      )
     }
   }
 }
@@ -47,9 +55,10 @@ async function getTokenBalances (address) {
  * @return {Boolean}
  */
 function isPortfolioBalanced (portfolio, balances, threshold) {
-  const diff = portfolio.currentStatus[0].percentage - portfolio.tokens[0].percentage
+  const diff =
+    portfolio.currentStatus[0].percentage - portfolio.tokens[0].percentage
 
-  return (diff < threshold) && (diff > -1 * threshold)
+  return diff < threshold && diff > -1 * threshold
 }
 
 /**
@@ -61,21 +70,26 @@ function isPortfolioBalanced (portfolio, balances, threshold) {
  * @return {Object}
  */
 async function updatePortfolioStatus (portfolio, balances, ethPrice, daiPrice) {
-  portfolio.currentStatus = [{
-    token: 'ETH',
-    tokenDollarValue: ethPrice,
-    totalDollarValue: ethPrice * balances.eth,
-    percentage: null
-  }, {
-    token: 'DAI',
-    tokenDollarValue: daiPrice,
-    totalDollarValue: daiPrice * balances.dai,
-    percentage: null
-  }]
+  portfolio.currentStatus = [
+    {
+      token: 'ETH',
+      tokenDollarValue: ethPrice,
+      totalDollarValue: ethPrice * balances.eth,
+      percentage: null
+    },
+    {
+      token: 'DAI',
+      tokenDollarValue: daiPrice,
+      totalDollarValue: daiPrice * balances.dai,
+      percentage: null
+    }
+  ]
   const ethTotal = portfolio.currentStatus[0].totalDollarValue
   const daiTotal = portfolio.currentStatus[1].totalDollarValue
-  portfolio.currentStatus[0].percentage = ethTotal * 100 / (ethTotal + daiTotal)
-  portfolio.currentStatus[1].percentage = 100 - portfolio.currentStatus[0].percentage
+  portfolio.currentStatus[0].percentage =
+    (ethTotal * 100) / (ethTotal + daiTotal)
+  portfolio.currentStatus[1].percentage =
+    100 - portfolio.currentStatus[0].percentage
   return portfolio.save()
 }
 

@@ -3,16 +3,20 @@ const mongoose = require('./connection')
 const portfolioSchema = new mongoose.Schema({
   email: String,
   address: String,
-  tokens: [{
-    token: String,
-    percentage: Number
-  }],
-  currentStatus: [{
-    token: String,
-    percentage: Number,
-    tokenDollarValue: Number,
-    totalDollarValue: Number
-  }],
+  tokens: [
+    {
+      token: String,
+      percentage: Number
+    }
+  ],
+  currentStatus: [
+    {
+      token: String,
+      percentage: Number,
+      tokenDollarValue: Number,
+      totalDollarValue: Number
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now()

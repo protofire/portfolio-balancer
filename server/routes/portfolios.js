@@ -9,17 +9,24 @@ const portfolioValidator = validate({
     email: Joi.string().required(),
     address: Joi.string().required(),
     tokens: Joi.array()
-      .items(Joi.object().keys({
-        token: Joi.string(),
-        percentage: Joi.number().min(0).max(100)
-      }))
+      .items(
+        Joi.object().keys({
+          token: Joi.string(),
+          percentage: Joi.number()
+            .min(0)
+            .max(100)
+        })
+      )
       .required()
   }
 })
 
 router.post('/', portfolioValidator, async (ctx, next) => {
   try {
-    const sum = ctx.request.body.tokens.reduce((acc, t) => acc + t.percentage, 0)
+    const sum = ctx.request.body.tokens.reduce(
+      (acc, t) => acc + t.percentage,
+      0
+    )
     if (sum > 100) {
       throw new Error('Token percentages above 100%: ' + sum)
     }
