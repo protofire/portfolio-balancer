@@ -19,9 +19,8 @@ async function getTokenBalance ({ walletAddress, contractAddr }) {
         if (result) {
           const tokens = web3.utils.toBN(result).toString()
           return resolve(parseFloat(web3.utils.fromWei(tokens, 'ether')))
-        } else {
-          return reject(err)
         }
+        return reject(err)
       }
     )
   })

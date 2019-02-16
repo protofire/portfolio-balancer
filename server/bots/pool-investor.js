@@ -5,26 +5,30 @@ const { getPoolData, getContractParams, investOnLoan } = require('../lib/pool')
  * Invests the available pool balance on loan requests that match the pool paramaters
  */
 async function investPoolDAI () {
-  const availableDAI = (await getPoolData()).balance
-  const contractParams = await getContractParams()
-  if (availableDAI > 0) {
-    const allLoanRequests = await getAllLoanRequests()
-    const matchingLoanRequests = await getMatchingLoanRequests(
-      contractParams,
-      allLoanRequests
-    )
-    const bestMatch = await sortLoanRequests(matchingLoanRequests)[0]
-    if (bestMatch) {
-      const amount = Math.min(availableDAI, bestMatch.loanAmount)
-      await investOnLoan(
-        bestMatch,
-        adjustTo5Percent(amount, bestMatch.loanAmount)
+  try {
+    const availableDAI = (await getPoolData()).balance
+    const contractParams = await getContractParams()
+    if (availableDAI > 0) {
+      const allLoanRequests = await getAllLoanRequests()
+      const matchingLoanRequests = await getMatchingLoanRequests(
+        contractParams,
+        allLoanRequests
       )
+      const bestMatch = await sortLoanRequests(matchingLoanRequests)[0]
+      if (bestMatch) {
+        const amount = Math.min(availableDAI, bestMatch.loanAmount)
+        await investOnLoan(
+          bestMatch,
+          adjustTo5Percent(amount, bestMatch.loanAmount)
+        )
+      } else {
+        console.log('No matching loan requests :(')
+      }
     } else {
-      console.error('No matching loan requests :(')
+      console.log('No DAI to invest :(')
     }
-  } else {
-    console.error('No DAI to invest :(')
+  } catch (error) {
+    console.error('Error while investing')
   }
 }
 

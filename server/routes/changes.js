@@ -1,4 +1,5 @@
 var Router = require('koa-router')
+const { updatePortfolioStatus } = require('../lib/portfolios')
 
 var router = new Router()
 
@@ -24,7 +25,17 @@ var router = new Router()
 //   }
 // }
 router.post('/', async (ctx, next) => {
-  ctx.throw(400, 'Not implemented')
+  try {
+    console.log('Received meerkat event', ctx.request.body)
+    if (parseFloat(ctx.request.body.amount) > 0) {
+      const address = ctx.request.body.address
+      const balances = await getTokenBalances(address)
+      await updatePortfolioStatus(portfolios[i], balances, ethPrice, daiPrice)
+    }
+    ctx.body = 'Ok'
+  } catch (error) {
+    console.error('Error processing meerkat event')
+  }
 })
 
 module.exports = router
