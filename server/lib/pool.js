@@ -36,7 +36,13 @@ async function getContractParams () {
 }
 
 async function getPoolData () {
-  return poolContractInstance.methods.poolData.call()
+  const data = await poolContractInstance.methods.poolData.call()
+  const liquidityLimit = await poolContractInstance.methods.liquidityLimit.call()
+
+  // @TODO: make sure this is accurate
+  return {
+    balance: data[1] - liquidityLimit
+  }
 }
 
 async function investOnLoan (loanRequest) {

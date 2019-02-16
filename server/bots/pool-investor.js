@@ -13,7 +13,10 @@ async function investPoolDAI () {
     const bestMatch = await sortLoanRequests(matchingRequests)[0]
     if (bestMatch) {
       const amount = Math.min(availableDAI, bestMatch.loanAmount)
-      await investOnLoan(bestMatch, amount)
+      await investOnLoan(
+        bestMatch,
+        adjustTo5Percent(amount, bestMatch.loanAmount)
+      )
     } else {
       console.error('No matching loan requests :(')
     }
@@ -45,7 +48,7 @@ function getMatchingLoanRequests (contractParams, allLoanRequests) {
       loanRequest.state === 'Funding' &&
       loanRequest.moe === 'DAI' &&
       loanRequest.mpr >= contractParams.mpr &&
-      loanRequest.duration <= contractParams.duration &&
+      // loanRequest.duration <= contractParams.duration &&
       ltv(loanRequest) >= contractParams.ltv
     )
   })
@@ -62,6 +65,11 @@ function sortLoanRequests (loanRequests) {
   return loanRequests.sort((a, b) => {
     return b.mpr - a.mpr
   })
+}
+
+function adjustTo5Percent (amount, max) {
+  const fivePercent = max / 20
+  return fivePercent * Math.floor(amount / fivePercent)
 }
 
 module.exports = {
