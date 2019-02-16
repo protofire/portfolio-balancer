@@ -17,6 +17,10 @@ const portfolioSchema = new mongoose.Schema({
       totalDollarValue: Number
     }
   ],
+  investment: {
+    address: String,
+    amount: Number
+  },
   createdAt: {
     type: Date,
     default: Date.now()

@@ -20,6 +20,12 @@ const portfolioValidator = validate({
       .required()
   }
 })
+const portfolioInvestmentValidator = validate({
+  body: {
+    amount: Joi.number().required(),
+    address: Joi.string().required()
+  }
+})
 
 router.post('/', portfolioValidator, async (ctx, next) => {
   try {
@@ -46,6 +52,17 @@ router.get('/:address', async (ctx, next) => {
     ctx.throw(404, 'No Portfolios found')
   }
   ctx.body = portfolios
+})
+
+router.patch('/:address', portfolioInvestmentValidator, async (ctx, next) => {
+  const address = ctx.params.address.toLowerCase()
+  const portfolios = await Portfolio.find({ address })
+  if (!portfolios || !portfolios.length) {
+    ctx.throw(404, 'No Portfolios found')
+  }
+  const portfolio = portfolios[0]
+  portfolio.investment = ctx.request.body
+  ctx.body = await portfolio.save()
 })
 
 module.exports = router
