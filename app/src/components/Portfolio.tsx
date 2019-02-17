@@ -58,6 +58,7 @@ const Portfolio = ({ data }: any) => {
         axios
           .patch(`${API_URL}/portfolios/${accountAddress}`, {
             address: poolAddress,
+            percentage: data.currentStatus[1].percentage,
             amount: jsAmount
           })
           .then(function(response) {
@@ -81,6 +82,7 @@ const Portfolio = ({ data }: any) => {
         axios
           .patch(`${API_URL}/portfolios/${accountAddress}`, {
             address: poolAddress,
+            percentage: 0,
             amount: 0
           })
           .then(function(response) {
@@ -131,7 +133,7 @@ const Portfolio = ({ data }: any) => {
         </div>
         <div>
           <h4>Current Status</h4>
-          <BalanceChart data={data.currentStatus} />
+          <BalanceChart data={data.currentStatus} investment={data.investment} />
         </div>
       </Content>
       <Footer>
@@ -183,7 +185,7 @@ const Footer = styled.div`
 `;
 
 const PortfolioCard = styled(Card)`
-  width: 260px;
+  width: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;

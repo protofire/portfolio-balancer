@@ -4,6 +4,11 @@ const assert = require('assert')
 const BigNumber = require('bignumber.js')
 
 assert(process.env.WEB3_PROVIDER, 'process.env.WEB3_PROVIDER is required')
+assert(
+  process.env.BOT_WALLET_ADDRESS,
+  'process.env.BOT_WALLET_ADDRESS is required'
+)
+assert(process.env.BOT_WALLET_PK, 'process.env.BOT_WALLET_PK is required')
 const web3 = new Web3(
   new Web3.providers.HttpProvider(process.env.WEB3_PROVIDER)
 )
@@ -93,19 +98,12 @@ async function sendtx (contract, contractAddress, loanAddress, bnAmount) {
   }
   console.log(rawTransaction)
 
-  // creating tranaction via ethereumjs-tx
   var transaction = new Tx(rawTransaction)
 
-  // signing transaction with private key
   transaction.sign(privateKey)
 
-  // sending transacton via web3 module
   const result = await web3.eth.sendSignedTransaction(
     '0x' + transaction.serialize().toString('hex')
   )
-  console.log(
-    'result',
-    result,
-    '💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩'
-  )
+  console.log('result', result)
 }

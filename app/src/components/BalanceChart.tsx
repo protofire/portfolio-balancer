@@ -9,11 +9,12 @@ export interface PortionProps {
 
 interface BalanceChartProps {
   data: PortionProps[];
+  investment?: any
 }
 
 const DEFAULT_COLORS = ['#c1adf4', '#65b1cb'];
 
-const BalanceChart = ({ data, ...props }: BalanceChartProps) => {
+const BalanceChart = ({ data, investment, ...props }: BalanceChartProps) => {
   return (
     <Wrapper {...props}>
       <BarsWrapper>
@@ -22,10 +23,13 @@ const BalanceChart = ({ data, ...props }: BalanceChartProps) => {
           if (!propsWithColor.color) {
             propsWithColor.color = DEFAULT_COLORS[i];
           }
+          if (investment && investment.percentage) {
+            propsWithColor.color = 'green';
+          }
           return <Portion key={`${props.token}-portion`} {...propsWithColor} />;
         })}
       </BarsWrapper>
-      <Caption data={data} />
+      <Caption data={data} investment={investment} />
     </Wrapper>
   );
 };
@@ -48,7 +52,7 @@ const BarsWrapper = styled.div`
   }
 `;
 
-const Caption = ({ data }: BalanceChartProps) => {
+const Caption = ({ data, investment }: BalanceChartProps) => {
   return (
     <CaptionList>
       {data.map((props, i) => {
@@ -58,10 +62,14 @@ const Caption = ({ data }: BalanceChartProps) => {
         }
         return (
           <CaptionItem key={`${props.token}-cap-item`} {...propsWithColor}>
-            <span /> {`${props.token} ${Math.floor(props.percentage*100)/100}%`}
+            <span /> {`${props.token} ${Math.floor(((props.percentage&&investment)?(props.percentage-investment.percentage):props.percentage)*100)/100}%`}
           </CaptionItem>
         );
       })}
+      {investment &&
+          <CaptionItem key={`investment-cap-item`}>
+            <span /> {`Invested DAI ${Math.floor(investment.percentage*100)/100}%`}
+          </CaptionItem>}
     </CaptionList>
   );
 };
