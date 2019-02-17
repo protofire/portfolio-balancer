@@ -60,6 +60,7 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
         })
         .then(function(response) {
           logger.log('response', response);
+          window.location.reload();
           if (onCreatePorfolio) {
             onCreatePorfolio();
           }

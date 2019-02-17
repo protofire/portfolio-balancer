@@ -49,6 +49,7 @@ async function getAllLoanRequests () {
   //   const data = await marketplace.requests.getLoanData(requestAddress)
   //   requestsData.push(data)
   // }
+  // console.log(requestsData)
   // return requestsData
 }
 

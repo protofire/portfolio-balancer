@@ -58,7 +58,7 @@ const Caption = ({ data }: BalanceChartProps) => {
         }
         return (
           <CaptionItem key={`${props.token}-cap-item`} {...propsWithColor}>
-            <span /> {`${props.token} ${props.percentage}%`}
+            <span /> {`${props.token} ${Math.floor(props.percentage*100)/100}%`}
           </CaptionItem>
         );
       })}
