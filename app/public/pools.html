@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Money Market Fund</title>
+  <link rel="stylesheet" type="text/css" href="./main.css">
+  <script src="./web3.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Fund rules</h1>
+    <h2 id="instructor"></h2>
+
+    <label for="liquidityPercentage" class="col-lg-2 control-label">Liquidity Percentage</label>
+    <input id="liquidityPercentage" type="text" value="20">
+    <label for="feePercentage" class="col-lg-2 control-label">Fee Percentage</label>
+    <input id="feePercentage" type="text" value="50">
+    <label for="subscriptorsLimit" class="col-lg-2 control-label">Subscriptors Limit</label>
+    <input id="subscriptorsLimit" type="text" value="10">
+    <label for="minCap" class="col-lg-2 control-label">Min Cap</label>
+    <input id="minCap" type="text" value="2">
+    <label for="mpr" class="col-lg-2 control-label">MPR</label>
+    <input id="mpr" type="text" value="1">
+    <label for="ltv" class="col-lg-2 control-label">LTV</label>
+    <input id="ltv" type="text" value="50">
+    <label for="duration" class="col-lg-2 control-label">duration</label>
+    <input id="duration" type="text" value="1">
+
+    <button id="button">Create fund</button>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

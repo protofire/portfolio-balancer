@@ -12,7 +12,7 @@ interface Props {
 
 const AddPortfolio = ({ onCreatePorfolio }: Props) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [portfolio, setPortfolio] = useState(['GNO', 'DAI']);
+  const [portfolio, setPortfolio] = useState(['ETH', 'DAI']);
 
   const root = useRef(null);
 

@@ -44,7 +44,7 @@ const AddPortfolioForm = ({ isOpen, onClose, tokens, onCreatePorfolio }: Props) 
   //           "percentage": 60
   //       },
   //       {
-  //           "token": "GNO",
+  //           "token": "ETH",
   //           "percentage": 40
   //       }
   //   ]
