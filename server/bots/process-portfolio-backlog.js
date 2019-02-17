@@ -32,7 +32,7 @@ async function processPortfolioBacklog () {
       }
     }
   } catch (error) {
-    console.error('Error while processing porfolios')
+    console.error('Error while processing porfolios', error)
   }
 }
 

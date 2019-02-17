@@ -26262,33 +26262,15 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
-    "1550281690879": {
-      "events": {},
-      "links": {},
-      "address": "0x1363CCC86eEfaCc49eFDa7Cf7D9358d8Fe6Cb02d",
-      "transactionHash": "0x3a837a0c8dfc68b6ac8bc2b4a3f52dce160887ab4a3ac75aafa3236989570bf7"
-    },
-    "1550318684200": {
-      "events": {},
-      "links": {},
-      "address": "0xC4424C0B33B1dDa07DC64bE463D925FF252118c4",
-      "transactionHash": "0x94ca8ad05fa07ae79099a99eb0e8fbbe9841957532ec3925e58639b79877fa4b"
-    },
-    "1550338762020": {
-      "events": {},
-      "links": {},
-      "address": "0x879d40915cDc93ea726bc9D42D5cc96460a27434",
-      "transactionHash": "0xf46b669ecc406e68cec855741f42ee4443f0d43bb6480867212de9aa84135c1e"
-    },
     "1550360261847": {
       "events": {},
       "links": {},
-      "address": "0x879d40915cDc93ea726bc9D42D5cc96460a27434",
-      "transactionHash": "0x465e1ecf1f234f528c5a138ffba13538c9f2da946e4b818fbb4356ecbc894204"
+      "address": "0x2563ec7c4De17b16518Fff69AaD5A12cC1337B77",
+      "transactionHash": "0x5e20c305f2ec492f9d066fb1197a2f44303aec7a2965cb056750d9283ba33f66"
     }
   },
   "schemaVersion": "3.0.2",
-  "updatedAt": "2019-02-16T23:38:54.213Z",
+  "updatedAt": "2019-02-17T01:02:45.450Z",
   "devdoc": {
     "author": "Anibal Catalán <anibalcatalanf@gmail.com>",
     "methods": {},

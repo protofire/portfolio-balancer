@@ -14,7 +14,8 @@ const portfolioSchema = new mongoose.Schema({
       token: String,
       percentage: Number,
       tokenDollarValue: Number,
-      totalDollarValue: Number
+      totalDollarValue: Number,
+      balance: Number
     }
   ],
   investment: {

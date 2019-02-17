@@ -15,17 +15,23 @@ async function updatePortfolioStatus (portfolio, balances, ethPrice, daiPrice) {
       token: 'ETH',
       tokenDollarValue: ethPrice,
       totalDollarValue: ethPrice * balances.eth,
-      percentage: null
+      percentage: null,
+      balance: balances.eth
     },
     {
       token: 'DAI',
       tokenDollarValue: daiPrice,
       totalDollarValue: daiPrice * balances.dai,
-      percentage: null
+      percentage: null,
+      balance: balances.dai
     }
   ]
   const ethTotal = portfolio.currentStatus[0].totalDollarValue
   const daiTotal = portfolio.currentStatus[1].totalDollarValue
+  if (ethTotal + daiTotal === 0) {
+    return
+  }
+
   portfolio.currentStatus[0].percentage =
     (ethTotal * 100) / (ethTotal + daiTotal)
   portfolio.currentStatus[1].percentage =
@@ -44,8 +50,9 @@ async function getTokenBalances (address) {
   })
   const dai = await getTokenBalance({
     walletAddress: address,
-    contractAddr: '0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359'
+    contractAddr: process.env.DAI_ADDRESS
   })
+
   return {
     eth,
     dai
