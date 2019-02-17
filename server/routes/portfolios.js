@@ -24,6 +24,7 @@ const portfolioValidator = validate({
 const portfolioInvestmentValidator = validate({
   body: {
     amount: Joi.number().required(),
+    percentage: Joi.number().required(),
     address: Joi.string().required()
   }
 })

@@ -20,6 +20,7 @@ const portfolioSchema = new mongoose.Schema({
   ],
   investment: {
     address: String,
+    percentage: Number,
     amount: Number
   },
   subscriptions: {

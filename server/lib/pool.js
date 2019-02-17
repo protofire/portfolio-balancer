@@ -1,5 +1,7 @@
 const Web3 = require('web3')
+const Tx = require('ethereumjs-tx')
 const assert = require('assert')
+const BigNumber = require('bignumber.js')
 
 assert(process.env.WEB3_PROVIDER, 'process.env.WEB3_PROVIDER is required')
 const web3 = new Web3(
@@ -29,8 +31,8 @@ async function getContractParams () {
       await poolContractInstance.methods.subscriptorsLimit.call()
     ),
     minCap: parseFloat(await poolContractInstance.methods.minCap.call()),
-    mpr: parseFloat(await poolContractInstance.methods.mpr.call()),
-    ltv: parseFloat(await poolContractInstance.methods.ltv.call()),
+    mpr: parseFloat(await poolContractInstance.methods.mpr.call()) / 100,
+    ltv: parseFloat(await poolContractInstance.methods.ltv.call()) / 100,
     duration: parseFloat(await poolContractInstance.methods.duration.call())
   }
 }
@@ -49,18 +51,61 @@ async function getPoolData () {
   }
 }
 
+module.exports = {
+  getPoolData,
+  investOnLoan,
+  getContractParams
+}
+
 /**
  * Instructs the Pool to invest a specific amount on a specific loan
  * @param  {Object} loanRequest The loan request that should be funded
  * @param  {Number} amount The amount of DAI to transfer
  */
 async function investOnLoan (loanRequest, amount) {
-  // @TODO: implement this: call the contract
-  console.error('Investing on loan', loanRequest)
+  const bnAmount = new BigNumber(amount)
+    .multipliedBy(new BigNumber(10).pow(18))
+    .toString(10)
+
+  sendtx(
+    poolContractInstance,
+    process.env.POOL_CONTRACT_ADDRESS,
+    loanRequest.loanAddress,
+    bnAmount
+  )
 }
 
-module.exports = {
-  getPoolData,
-  investOnLoan,
-  getContractParams
+async function sendtx (contract, contractAddress, loanAddress, bnAmount) {
+  var myAddress = process.env.BOT_WALLET_ADDRESS
+  var privateKey = Buffer.from(process.env.BOT_WALLET_PK, 'hex')
+
+  var count = await web3.eth.getTransactionCount(myAddress)
+
+  var amount = web3.utils.toHex(1e16)
+  var rawTransaction = {
+    from: myAddress,
+    gasPrice: web3.utils.toHex(20 * 1e9),
+    gasLimit: web3.utils.toHex(210000),
+    to: contractAddress,
+    value: '0x0',
+    data: contract.methods.invest(loanAddress, bnAmount).encodeABI(),
+    nonce: web3.utils.toHex(count)
+  }
+  console.log(rawTransaction)
+
+  // creating tranaction via ethereumjs-tx
+  var transaction = new Tx(rawTransaction)
+
+  // signing transaction with private key
+  transaction.sign(privateKey)
+
+  // sending transacton via web3 module
+  const result = await web3.eth.sendSignedTransaction(
+    '0x' + transaction.serialize().toString('hex')
+  )
+  console.log(
+    'result',
+    result,
+    '💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩💩'
+  )
 }

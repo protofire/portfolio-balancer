@@ -65,7 +65,6 @@ function getMatchingLoanRequests (contractParams, allLoanRequests) {
       loanRequest.state === 'Funding' &&
       loanRequest.moe === 'DAI' &&
       loanRequest.mpr >= contractParams.mpr &&
-      // loanRequest.duration <= contractParams.duration &&
       ltv(loanRequest) >= contractParams.ltv
     )
   })

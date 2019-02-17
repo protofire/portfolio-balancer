@@ -15,7 +15,7 @@ updateTokenPrices()
 const { processPortfolioBacklog } = require('./bots/process-portfolio-backlog')
 setInterval(function () {
   processPortfolioBacklog()
-}, 1000 * (process.env.PORTFOLIO_NOTIFICATION_INTERVAL_SECONDS || 60))
+}, 1000 * (process.env.PORTFOLIO_NOTIFICATION_INTERVAL_SECONDS || 10))
 processPortfolioBacklog()
 
 /**
